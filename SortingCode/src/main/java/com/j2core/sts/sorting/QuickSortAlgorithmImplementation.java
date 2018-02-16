@@ -1,4 +1,4 @@
-package sorting;
+package com.j2core.sts.sorting;
 
 import java.util.LinkedList;
 import java.util.List;

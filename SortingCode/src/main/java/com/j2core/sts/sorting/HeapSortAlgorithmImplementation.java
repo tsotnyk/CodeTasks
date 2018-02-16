@@ -1,12 +1,12 @@
-package sorting;
+package com.j2core.sts.sorting;
 
 /*
-   The class implement bubble sort algorithm
+   The class implement heap sort algorithm
  */
 public class HeapSortAlgorithmImplementation {
 
     /**
-     * The method implements heap sort algorithm
+     * The method sort elements in array from smaller to bigger elements use heap principle.
      *
      * @param array  array with not sorted numbers
      * @return  array with sorted numbers
@@ -78,7 +78,6 @@ public class HeapSortAlgorithmImplementation {
             tmpIndex2 = 0;
 
             passageBranchHeapSort(array, indexLastElement, tmpIndex1, tmpIndex2);
-
         }
 
         return array;
@@ -114,7 +113,6 @@ public class HeapSortAlgorithmImplementation {
         int tmpValue;
 
         while (firstIndex <= indexLastElement) {
-
             if (firstIndex != indexLastElement) {
 
                 if (array[firstIndex] < array[firstIndex + 1]) {
@@ -122,19 +120,15 @@ public class HeapSortAlgorithmImplementation {
                     firstIndex = firstIndex + 1;
                 }
             }
-
             if (array[firstIndex] > array[supportingElementIndex]) {
 
                 tmpValue = array[firstIndex];
                 array[firstIndex] = array[supportingElementIndex];
                 array[supportingElementIndex] = tmpValue;
-
             }
 
             supportingElementIndex = firstIndex;
             firstIndex = (firstIndex * 2) + 1;
-
         }
-
     }
 }

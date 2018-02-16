@@ -1,4 +1,4 @@
-package sorting;
+package com.j2core.sts.sorting;
 
 /*
    The class implement merge sort algorithm
