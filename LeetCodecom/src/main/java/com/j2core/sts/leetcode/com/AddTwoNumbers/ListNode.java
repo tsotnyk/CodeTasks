@@ -1,9 +1,12 @@
 package com.j2core.sts.leetcode.com.AddTwoNumbers;
 
+/**
+ * The class is easy implement simply-connected list
+ */
 public class ListNode {
 
-    int val;
-    ListNode next;
+    int val;          //value
+    ListNode next;    // next list's object
 
     ListNode(int x) {
         val = x;

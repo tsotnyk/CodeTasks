@@ -1,7 +1,16 @@
 package com.j2core.sts.leetcode.com.RomanToInteger;
 
+/**
+ * The class convert roman numeral it to an integer.
+ */
 public class Solution {
 
+    /**
+     * The method convert roman numeral it to an integer
+     *
+     * @param s     numeral for convert
+     * @return      converted number
+     */
     public int romanToInt(String s) {
         int result = 0;
         char[] arrayChar = s.toCharArray();

@@ -1,7 +1,16 @@
 package com.j2core.sts.leetcode.com.DecodeString;
 
+/*
+The class given an encoded string, return it's decoded string.
+ */
 public class Solution {
 
+    /**
+     * The method given an encoded string, return it's decoded string.
+     *
+     * @param s     string for decode
+     * @return      decoded string
+     */
     public String decodeString(String s) {
 
         String result = s;
@@ -30,6 +39,12 @@ public class Solution {
         return result;
     }
 
+    /**
+     * The method decode subString
+     *
+     * @param tmpString      subString
+     * @return               decoded string
+     */
     private String createSubString(String tmpString){
 
         int amount = 0;

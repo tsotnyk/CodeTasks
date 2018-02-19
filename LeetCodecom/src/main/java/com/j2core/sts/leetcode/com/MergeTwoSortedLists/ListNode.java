@@ -1,5 +1,8 @@
 package com.j2core.sts.leetcode.com.MergeTwoSortedLists;
 
+/**
+ * The class is easy implement simply-connected list
+ */
 public class ListNode {
 
     int val;

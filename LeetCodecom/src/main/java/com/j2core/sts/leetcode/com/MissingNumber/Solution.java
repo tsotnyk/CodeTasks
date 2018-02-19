@@ -2,8 +2,17 @@ package com.j2core.sts.leetcode.com.MissingNumber;
 
 import java.util.Arrays;
 
+/*
+   The class find the one number witch missing from the array
+ */
 public class Solution {
 
+    /**
+     * The method find the one number witch missing from the array
+     *
+     * @param nums    array with numbers
+     * @return        number witch missing from the array
+     */
     public int missingNumber(int[] nums) {
         int result;
         if (nums.length == 1){

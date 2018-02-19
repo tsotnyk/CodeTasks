@@ -1,7 +1,17 @@
 package com.j2core.sts.leetcode.com.AddTwoNumbers;
 
+/**
+ * The class count two numbers
+ */
 public class Solution {
 
+    /**
+     * The method count count two numbers with saved in to list node
+     *
+     * @param l1   first numbers witch wrote in the list node
+     * @param l2   second number witch wrote in the list node
+     * @return     result numbers witch wrot in list node
+     */
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
 
         ListNode result = null;
@@ -63,6 +73,12 @@ public class Solution {
         return result;
     }
 
+    /**
+     * The method create array with chars from list node's with numbers
+     *
+     * @param listNode   list node with number
+     * @return           result array with number's chars
+     */
     private char[] createNumArray(ListNode listNode){
 
         if (listNode != null) {

@@ -1,7 +1,16 @@
 package com.j2core.sts.leetcode.com.ReverseInteger;
 
+/*
+   The method reverse digits of an integer.
+ */
 public class Solution {
 
+    /**
+     * The method reverse digits of an integer.
+     *
+     * @param x     number for reverse
+     * @return      resulted number
+     */
     public static int reverse(int x) {
 
         int result;

@@ -1,7 +1,16 @@
 package com.j2core.sts.leetcode.com.ToeplitzMatrix;
 
+/*
+   The class check if every diagonal from top-left to bottom-right has the same element
+ */
 public class Solution {
 
+    /**
+     * The method check if every diagonal from top-left to bottom-right has the same element
+     *
+     * @param matrix    numbers matrix
+     * @return          every diagonal from top-left to bottom-right has the same element or not
+     */
     public boolean isToeplitzMatrix(int[][] matrix) {
 
         if (matrix.length == 1) {

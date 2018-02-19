@@ -1,15 +1,23 @@
 package com.j2core.sts.leetcode.com.MinStack;
 
+/*
+   The class is easy implementation mini stack
+ */
 public class MinStack {
 
-    int stackSize = 512;
-    private int [] stack = new int[stackSize];
-    private int minElement;
-    private int index = 0;
+    int stackSize = 512;                            // stack's size
+    private int [] stack = new int[stackSize];      // array for save numbers
+    private int minElement;                         // min element in stack
+    private int index = 0;                          // index for first free position in stack
 
     public MinStack() {
     }
 
+    /**
+     * The method push element onto stack
+     *
+     * @param x     element for save onto stack
+     */
     public void push(int x) {
 
         if (index == 0){
@@ -28,6 +36,9 @@ public class MinStack {
         }
     }
 
+    /**
+     *  The method removes the element on top of the stack
+     */
     public void pop() {
         index--;
         if (stack[index] == minElement){
@@ -42,10 +53,20 @@ public class MinStack {
         }
     }
 
+    /**
+     * The method get the top element
+     *
+     * @return   top element from stack
+     */
     public int top() {
         return stack[index-1];
     }
 
+    /**
+     * The method retrieve the minimum element in the stack
+     *
+     * @return     min element from stack
+     */
     public int getMin() {
 
         return this.minElement;

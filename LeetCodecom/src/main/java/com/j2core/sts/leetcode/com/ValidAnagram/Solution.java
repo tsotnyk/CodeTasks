@@ -1,8 +1,18 @@
 package com.j2core.sts.leetcode.com.ValidAnagram;
 
+/*
+   The class check determine if first string is an anagram of second string
+ */
 public class Solution {
 
-    public boolean isAnagram(String s, String t) {
+    /**
+     * The method check determine if first string is an anagram of second string
+     *
+     * @param t     first string
+     * @param s     second string
+     * @return      first string is anagram of second string or not
+     */
+    public boolean isAnagram(String t, String s) {
         if (s.length() != t.length()) return false;
 
         int amountLetterS;

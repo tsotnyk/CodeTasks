@@ -1,7 +1,16 @@
 package com.j2core.sts.leetcode.com.CountPrimes;
 
+/**
+ * The class count the number of prime numbers less than a non-negative number
+ */
 public class Solution {
 
+    /**
+     * The method count the number of prime numbers less than a non-negative number
+     *
+     * @param n     // non-negative number
+     * @return      count's result
+     */
     public int countPrimes(int n) {
         int counter;
         switch (n){

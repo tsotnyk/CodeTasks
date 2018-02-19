@@ -1,7 +1,16 @@
 package com.j2core.sts.leetcode.com.MaximumSwap;
 
+/*
+   The class change two digits at most once to get the maximum valued number.
+ */
 public class Solution {
 
+    /**
+     * The method could swap two digits at most once to get the maximum valued number.
+     *
+     * @param num     number for change
+     * @return        maximum value number
+     */
     public int maximumSwap(int num) {
         int result = num;
         char[] array = Integer.toString(num).toCharArray();

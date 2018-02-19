@@ -1,7 +1,17 @@
 package com.j2core.sts.leetcode.com.FindTheDifference;
 
+/*
+ The class find the letter that was added in second string.
+ */
 public class Solution {
 
+    /**
+     * The method find the letter that was added in changed string.
+     *
+     * @param s    basic string
+     * @param t    changed string
+     * @return     char witch added in to second string
+     */
     public char findTheDifference(String s, String t) {
         String big;
         String less;

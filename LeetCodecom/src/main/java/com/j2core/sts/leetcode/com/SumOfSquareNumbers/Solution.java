@@ -1,7 +1,16 @@
 package com.j2core.sts.leetcode.com.SumOfSquareNumbers;
 
+/*
+  The class decide whether there're two integers a and b such that a2 + b2 = c.
+ */
 public class Solution {
 
+    /**
+     * The method decide whether there're two integers a and b such that a2 + b2 = c
+     *
+     * @param c        expression result
+     * @return         decide whether there're two integers a and b such that a2 + b2 = c or not
+     */
     public boolean judgeSquareSum(int c) {
         int tmpA = (int) Math.sqrt(c);
 

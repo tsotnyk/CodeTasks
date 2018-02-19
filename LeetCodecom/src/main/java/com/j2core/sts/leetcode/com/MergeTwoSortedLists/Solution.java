@@ -3,8 +3,18 @@ package com.j2core.sts.leetcode.com.MergeTwoSortedLists;
 import java.util.LinkedList;
 import java.util.List;
 
+/*
+   The class merge two sorted linked lists and return it as a new list.
+ */
 public class Solution {
 
+    /**
+     * The method merge two sorted linked lists.
+     *
+     * @param l1     first sorted list
+     * @param l2     second sorted list
+     * @return       result sorted list
+     */
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
 
         int[] arrayResult = null;
@@ -60,6 +70,12 @@ public class Solution {
         return result;
     }
 
+    /**
+     * The method create array from number's List
+     *
+     * @param listNode      collection with numbers
+     * @return              array with numbers
+     */
     private int[] createNumArray(ListNode listNode){
 
         if (listNode != null) {

@@ -1,7 +1,17 @@
 package com.j2core.sts.leetcode.com.RepeatedStringMatch;
 
+/*
+   The class find the minimum number of times basic string has to be repeated such that string is a substring of it
+ */
 public class Solution {
 
+    /**
+     * The method find the minimum number of times basic string has to be repeated such that string is a substring of it
+     *
+     * @param A      basic string
+     * @param B      subString
+     * @return       amount repeated basic string
+     */
     public int repeatedStringMatch(String A, String B) {
 
         int result = -1;

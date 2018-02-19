@@ -1,7 +1,17 @@
 package com.j2core.sts.leetcode.com.TwoSum;
 
+/*
+   The class return indices of the two numbers such that they add up to a specific target
+ */
 public class Solution {
 
+    /**
+     * The method return indices of the two numbers such that they add up to a specific target
+     *
+     * @param nums       array with numbers
+     * @param target     target sum
+     * @return           indices of the two numbers such that they add up to a specific target
+     */
     public int[] twoSum(int[] nums, int target) {
         int index = 0;
         int secondIndex = -1;

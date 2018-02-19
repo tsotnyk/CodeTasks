@@ -2,8 +2,17 @@ package com.j2core.sts.leetcode.com.SingleNumber;
 
 import java.util.Arrays;
 
+/*
+   The class find element witch is single onto number's array
+ */
 public class Solution {
 
+    /**
+     * The method find single element onto array
+     *
+     * @param nums      number's array
+     * @return          single element
+     */
     public int singleNumber(int[] nums) {
         Arrays.sort(nums);
         int singleNum = nums[0];

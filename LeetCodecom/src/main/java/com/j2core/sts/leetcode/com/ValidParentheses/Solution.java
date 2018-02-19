@@ -1,7 +1,16 @@
 package com.j2core.sts.leetcode.com.ValidParentheses;
 
+/*
+    The class determine if the input string with brackets is valid
+ */
 public class Solution {
 
+    /**
+     * The method determine if the input string with brackets is valid
+     *
+     * @param s   string with brackets
+     * @return    string valid or not
+     */
     public boolean isValid(String s) {
         if (s.length() % 2 != 0) return false;
 
@@ -35,6 +44,14 @@ public class Solution {
 
     }
 
+    /**
+     * The method get subString from basic string without one pairs brackets
+     *
+     * @param string         basic string
+     * @param openIndex      first index for subString
+     * @param closeIndex     last index for subString
+     * @return               new SubString
+     */
     private String createNewSubString(String string, int openIndex, int closeIndex){
 
         StringBuilder result = new StringBuilder();

@@ -3,8 +3,17 @@ package com.j2core.sts.leetcode.com.KeyboardRow;
 import java.util.LinkedList;
 import java.util.List;
 
+/*
+   The class return the words that can be typed using letters of alphabet on only one row's of American keyboard.
+ */
 public class Solution {
 
+    /**
+     * The method returned new array with words witch can be typed using letters of alphabet on only one row's of American keyboard.
+     *
+     * @param words     basic array with words
+     * @return          returned array
+     */
     public String[] findWords(String[] words) {
 
         List<String> wordList = new LinkedList<>();
@@ -20,7 +29,12 @@ public class Solution {
         return newStringArray;
     }
 
-
+    /**
+     * The method check can be typed using letters of alphabet on only one row's of American keyboard for write this word
+     *
+     * @param word  word witch need check
+     * @return     can be typed using letters of alphabet on only one row's or not
+     */
     private boolean containsInRow(String word){
 
         String firstRow = "QqWwEeRrTtYyUuIiOoPp";

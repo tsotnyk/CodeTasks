@@ -1,7 +1,16 @@
 package com.j2core.sts.leetcode.com.LargestNumberAtLeastTwiceOfOthers;
 
+/*
+   The class find whether the largest element in the array is at least twice as much as every other number in the array.
+ */
 public class Solution {
 
+    /**
+     * The method find index the largest element in the array is at least twice as much as every other number in the array
+     *
+     * @param nums  array with numbers for check
+     * @return      return the index of the largest element, or return -1.
+     */
     public int dominantIndex(int[] nums) {
         if(nums.length < 2) {
             return 0;

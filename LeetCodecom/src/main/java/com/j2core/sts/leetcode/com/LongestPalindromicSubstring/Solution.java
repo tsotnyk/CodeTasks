@@ -1,7 +1,16 @@
 package com.j2core.sts.leetcode.com.LongestPalindromicSubstring;
 
+/*
+   The class find the longest palindromic substring in basic string
+ */
 public class Solution {
 
+    /**
+     * The method find the longest palindromic substring in basic string
+     *
+     * @param s     basic string
+     * @return      longest palindromic
+     */
     public String longestPalindrome(String s) {
 
         if (s == null || s.length() == 0) return "";
