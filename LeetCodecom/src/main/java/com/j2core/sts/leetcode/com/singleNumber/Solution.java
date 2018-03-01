@@ -1,4 +1,4 @@
-package com.j2core.sts.leetcode.com.SingleNumber;
+package com.j2core.sts.leetcode.com.singleNumber;
 
 import java.util.Arrays;
 

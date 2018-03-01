@@ -1,4 +1,4 @@
-package com.j2core.sts.leetcode.com.ValidAnagram;
+package com.j2core.sts.leetcode.com.validAnagram;
 
 /*
    The class check determine if first string is an anagram of second string

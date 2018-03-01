@@ -1,4 +1,4 @@
-package com.j2core.sts.leetcode.com.LongestPalindromicSubstring;
+package com.j2core.sts.leetcode.com.longestPalindromicSubstring;
 
 /*
    The class find the longest palindromic substring in basic string

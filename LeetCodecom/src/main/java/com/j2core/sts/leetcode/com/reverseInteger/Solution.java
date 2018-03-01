@@ -1,4 +1,4 @@
-package com.j2core.sts.leetcode.com.ReverseInteger;
+package com.j2core.sts.leetcode.com.reverseInteger;
 
 /*
    The method reverse digits of an integer.

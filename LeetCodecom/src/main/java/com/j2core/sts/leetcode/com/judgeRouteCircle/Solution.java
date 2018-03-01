@@ -1,4 +1,4 @@
-package com.j2core.sts.leetcode.com.JudgeRouteCircle;
+package com.j2core.sts.leetcode.com.judgeRouteCircle;
 
 /*
    The class  given a sequence of its moves, judge if robot makes a circle.

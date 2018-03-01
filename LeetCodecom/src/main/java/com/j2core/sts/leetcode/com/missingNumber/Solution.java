@@ -1,4 +1,4 @@
-package com.j2core.sts.leetcode.com.MissingNumber;
+package com.j2core.sts.leetcode.com.missingNumber;
 
 import java.util.Arrays;
 

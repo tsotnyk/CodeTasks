@@ -1,4 +1,4 @@
-package com.j2core.sts.leetcode.com.CountPrimes;
+package com.j2core.sts.leetcode.com.countPrimes;
 
 /**
  * The class count the number of prime numbers less than a non-negative number

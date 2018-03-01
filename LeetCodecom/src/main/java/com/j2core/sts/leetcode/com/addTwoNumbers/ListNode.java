@@ -1,4 +1,4 @@
-package com.j2core.sts.leetcode.com.AddTwoNumbers;
+package com.j2core.sts.leetcode.com.addTwoNumbers;
 
 /**
  * The class is easy implement simply-connected list

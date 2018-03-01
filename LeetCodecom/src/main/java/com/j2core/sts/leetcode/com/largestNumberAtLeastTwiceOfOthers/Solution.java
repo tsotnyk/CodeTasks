@@ -1,4 +1,4 @@
-package com.j2core.sts.leetcode.com.LargestNumberAtLeastTwiceOfOthers;
+package com.j2core.sts.leetcode.com.largestNumberAtLeastTwiceOfOthers;
 
 /*
    The class find whether the largest element in the array is at least twice as much as every other number in the array.

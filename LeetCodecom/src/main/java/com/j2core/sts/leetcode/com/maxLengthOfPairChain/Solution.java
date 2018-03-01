@@ -1,4 +1,4 @@
-package com.j2core.sts.leetcode.com.MaxLengthOfPairChain;
+package com.j2core.sts.leetcode.com.maxLengthOfPairChain;
 
 import java.util.Arrays;
 

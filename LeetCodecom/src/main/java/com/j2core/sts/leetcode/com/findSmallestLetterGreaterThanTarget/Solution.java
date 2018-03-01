@@ -1,4 +1,4 @@
-package com.j2core.sts.leetcode.com.FindSmallestLetterGreaterThanTarget;
+package com.j2core.sts.leetcode.com.findSmallestLetterGreaterThanTarget;
 
 /*
 The class find the smallest element in the list that is larger than the given target.

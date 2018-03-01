@@ -1,4 +1,4 @@
-package com.j2core.sts.leetcode.com.MaximumSwap;
+package com.j2core.sts.leetcode.com.maximumSwap;
 
 /*
    The class change two digits at most once to get the maximum valued number.

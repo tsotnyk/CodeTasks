@@ -1,4 +1,4 @@
-package com.j2core.sts.leetcode.com.MinStack;
+package com.j2core.sts.leetcode.com.minStack;
 
 /*
    The class is easy implementation mini stack

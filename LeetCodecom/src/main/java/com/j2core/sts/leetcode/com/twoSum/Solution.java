@@ -1,4 +1,4 @@
-package com.j2core.sts.leetcode.com.TwoSum;
+package com.j2core.sts.leetcode.com.twoSum;
 
 /*
    The class return indices of the two numbers such that they add up to a specific target

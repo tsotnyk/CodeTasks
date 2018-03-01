@@ -1,4 +1,4 @@
-package com.j2core.sts.leetcode.com.KeyboardRow;
+package com.j2core.sts.leetcode.com.keyboardRow;
 
 import java.util.LinkedList;
 import java.util.List;

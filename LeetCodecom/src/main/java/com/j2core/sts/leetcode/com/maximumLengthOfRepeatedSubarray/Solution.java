@@ -1,4 +1,4 @@
-package com.j2core.sts.leetcode.com.MaximumLengthOfRepeatedSubarray;
+package com.j2core.sts.leetcode.com.maximumLengthOfRepeatedSubarray;
 
 /*
   The class give the maximum length of an subArray that appears in both arrays

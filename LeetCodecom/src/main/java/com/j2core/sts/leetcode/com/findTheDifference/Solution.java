@@ -1,4 +1,4 @@
-package com.j2core.sts.leetcode.com.FindTheDifference;
+package com.j2core.sts.leetcode.com.findTheDifference;
 
 /*
  The class find the letter that was added in second string.

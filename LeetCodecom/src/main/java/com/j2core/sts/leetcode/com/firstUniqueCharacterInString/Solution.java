@@ -1,4 +1,4 @@
-package com.j2core.sts.leetcode.com.FirstUniqueCharacterInString;
+package com.j2core.sts.leetcode.com.firstUniqueCharacterInString;
 
 /*
   The class find the first non-repeating character in it and return it's index.

@@ -1,4 +1,4 @@
-package com.j2core.sts.leetcode.com.RomanToInteger;
+package com.j2core.sts.leetcode.com.romanToInteger;
 
 /**
  * The class convert roman numeral it to an integer.

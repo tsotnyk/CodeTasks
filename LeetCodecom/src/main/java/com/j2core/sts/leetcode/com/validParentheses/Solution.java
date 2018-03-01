@@ -1,4 +1,4 @@
-package com.j2core.sts.leetcode.com.ValidParentheses;
+package com.j2core.sts.leetcode.com.validParentheses;
 
 /*
     The class determine if the input string with brackets is valid

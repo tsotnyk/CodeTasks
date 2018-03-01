@@ -1,4 +1,4 @@
-package com.j2core.sts.leetcode.com.SelfDividingNumbers;
+package com.j2core.sts.leetcode.com.selfDividingNumbers;
 
 import java.util.LinkedList;
 import java.util.List;

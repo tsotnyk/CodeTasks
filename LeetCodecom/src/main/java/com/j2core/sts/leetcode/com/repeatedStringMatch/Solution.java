@@ -1,4 +1,4 @@
-package com.j2core.sts.leetcode.com.RepeatedStringMatch;
+package com.j2core.sts.leetcode.com.repeatedStringMatch;
 
 /*
    The class find the minimum number of times basic string has to be repeated such that string is a substring of it

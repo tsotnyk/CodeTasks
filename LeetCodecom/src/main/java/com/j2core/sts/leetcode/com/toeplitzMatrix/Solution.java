@@ -1,4 +1,4 @@
-package com.j2core.sts.leetcode.com.ToeplitzMatrix;
+package com.j2core.sts.leetcode.com.toeplitzMatrix;
 
 /*
    The class check if every diagonal from top-left to bottom-right has the same element

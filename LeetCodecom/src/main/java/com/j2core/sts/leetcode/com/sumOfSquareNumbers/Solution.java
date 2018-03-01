@@ -1,4 +1,4 @@
-package com.j2core.sts.leetcode.com.SumOfSquareNumbers;
+package com.j2core.sts.leetcode.com.sumOfSquareNumbers;
 
 /*
   The class decide whether there're two integers a and b such that a2 + b2 = c.

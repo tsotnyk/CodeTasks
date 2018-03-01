@@ -1,4 +1,4 @@
-package com.j2core.sts.leetcode.com.DecodeString;
+package com.j2core.sts.leetcode.com.decodeString;
 
 /*
 The class given an encoded string, return it's decoded string.
