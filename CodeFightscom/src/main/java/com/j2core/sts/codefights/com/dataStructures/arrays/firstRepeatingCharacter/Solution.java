@@ -1,4 +1,4 @@
-package com.j2core.sts.codefights.com.firstRepeatingCharacter;
+package com.j2core.sts.codefights.com.dataStructures.arrays.firstRepeatingCharacter;
 
 public class Solution {
 

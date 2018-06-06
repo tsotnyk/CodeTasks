@@ -1,4 +1,4 @@
-package com.j2core.sts.codefights.com.sudoku2;
+package com.j2core.sts.codefights.com.dataStructures.arrays.sudoku2;
 
 public class Solution {
 

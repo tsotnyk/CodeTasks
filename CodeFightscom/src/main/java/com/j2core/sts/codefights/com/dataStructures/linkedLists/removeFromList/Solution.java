@@ -1,8 +1,8 @@
-package com.j2core.sts.codefights.com.dataStructures.removeFromList;
+package com.j2core.sts.codefights.com.dataStructures.linkedLists.removeFromList;
 
 public class Solution {
 
-    ListNode<Integer> removeKFromList(ListNode<Integer> l, int k) {
+    public ListNode<Integer> removeKFromList(ListNode<Integer> l, int k) {
 
         if (l != null) {
 

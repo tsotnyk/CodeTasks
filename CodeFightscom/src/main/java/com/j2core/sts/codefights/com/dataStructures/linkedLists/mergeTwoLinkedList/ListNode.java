@@ -1,4 +1,4 @@
-package com.j2core.sts.codefights.com.dataStructures.linkedLists.isListPalindrome;
+package com.j2core.sts.codefights.com.dataStructures.linkedLists.mergeTwoLinkedList;
 
 public class ListNode<T> {
 

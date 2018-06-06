@@ -1,4 +1,4 @@
-package com.j2core.sts.codefights.com.dataStructures.linkedLists.removeFromList;
+package com.j2core.sts.codefights.com.dataStructures.linkedLists.isListPalindrome;
 
 public class ListNode<T> {
 

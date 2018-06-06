@@ -1,4 +1,4 @@
-package com.j2core.sts.codefights.com.firstDuplicate;
+package com.j2core.sts.codefights.com.dataStructures.arrays.firstDuplicate;
 
 public class Solution {
 

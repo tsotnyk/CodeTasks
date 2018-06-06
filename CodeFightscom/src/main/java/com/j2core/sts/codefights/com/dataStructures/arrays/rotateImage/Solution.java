@@ -1,4 +1,4 @@
-package com.j2core.sts.codefights.com.rotateImage;
+package com.j2core.sts.codefights.com.dataStructures.arrays.rotateImage;
 
 public class Solution {
 

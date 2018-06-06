@@ -1,4 +1,4 @@
-package com.j2core.sts.codefights.com.dataStructures.linkedLists;
+package com.j2core.sts.codefights.com.dataStructures.linkedLists.removeFromList;
 
 public class ListNode<T> {
 

@@ -1,4 +1,4 @@
-package com.j2core.sts.codefights.com.isCryptSolution;
+package com.j2core.sts.codefights.com.dataStructures.arrays.isCryptSolution;
 
 public class Solution {
 
