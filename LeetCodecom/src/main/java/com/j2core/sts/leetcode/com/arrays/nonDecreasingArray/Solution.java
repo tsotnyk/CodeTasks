@@ -1,4 +1,4 @@
-package com.j2core.sts.leetcode.com.nonDecreasingArray;
+package com.j2core.sts.leetcode.com.arrays.nonDecreasingArray;
 
 public class Solution {
 

@@ -1,4 +1,4 @@
-package com.j2core.sts.leetcode.com.mergeTwoSortedLists;
+package com.j2core.sts.leetcode.com.linkedLists.mergeTwoSortedLists;
 
 import java.util.LinkedList;
 import java.util.List;
