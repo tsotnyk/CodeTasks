@@ -3,9 +3,6 @@ package com.j2core.sts.leetcode.com.arrays.stoneGame;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.util.LinkedList;
-import java.util.List;
-
 public class Solution {
 
     public boolean stoneGame(int[] piles) {
