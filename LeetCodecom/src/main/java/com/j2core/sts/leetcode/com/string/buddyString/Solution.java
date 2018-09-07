@@ -58,8 +58,6 @@ public class Solution {
     @Test
     public void test(){
 
-        Assert.assertTrue(buddyStrings("aaaaabc", "aaaaacb"));
-
         Assert.assertTrue(buddyStrings("abc", "acb"));
 
         Assert.assertTrue(buddyStrings("aa", "aa"));
