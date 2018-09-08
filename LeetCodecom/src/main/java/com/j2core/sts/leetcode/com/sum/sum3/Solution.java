@@ -1,4 +1,4 @@
-package com.j2core.sts.leetcode.com.sum3;
+package com.j2core.sts.leetcode.com.sum.sum3;
 
 
 import java.util.*;
