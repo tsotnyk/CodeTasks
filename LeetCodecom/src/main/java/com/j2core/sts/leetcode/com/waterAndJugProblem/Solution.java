@@ -3,7 +3,7 @@ package com.j2core.sts.leetcode.com.waterAndJugProblem;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class Solution {
+public class Solution{
 
     public boolean canMeasureWater(int x, int y, int z) {
 
