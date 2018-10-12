@@ -1,5 +1,7 @@
 package com.j2core.sts.leetcode.com.uncommonWordsFromTwoSentences;
 
+import org.testng.annotations.Test;
+
 import java.util.*;
 
 public class Solution {
@@ -56,6 +58,16 @@ public class Solution {
                 map.put(str, 1);
             }
         }
+
+    }
+
+
+    @Test
+    public void test(){
+
+        Map<String, Integer> map = new HashMap<>();
+
+        getWords("word the word a try", map);
 
     }
 
