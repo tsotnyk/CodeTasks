@@ -1,4 +1,4 @@
-package containerWithMostWater;
+package com.j2core.sts.leetcode.com.containerWithMostWater;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;

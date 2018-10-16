@@ -3,6 +3,8 @@ package com.j2core.sts.codefights.com.dataStructures.treesBasic.hasPathWithGiven
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.*;
+
 public class Solution {
 
     boolean hasPathWithGivenSum(Tree<Integer> t, int s) {

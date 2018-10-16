@@ -60,6 +60,10 @@ public class Solution {
             }
         }
 
+        Map<Integer, List<Integer>> map = new HashMap<Integer, List<Integer>>();
+
+        List<List<Integer>> newMap = (List<List<Integer>>) map.values();
+
         bufferedWriter.newLine();
 
         bufferedWriter.close();
