@@ -86,12 +86,20 @@ public class Solution {
                 for (int i = 1; i < big.length(); i++){
                     int tmp = big.charAt(i);
                     if (smallNum < tmp){
-                        return 
+                        if (small.equals(first)){
+                            return -1;
+                        }else {
+                            return 1;
+                        }
+                    }else if (smallNum > tmp){
+                        if (small.equals(first)){
+                            return 1;
+                        }else {
+                            return -1;
+                        }
                     }
                 }
             }
-
-
             return 0;
         }
     }

@@ -24,15 +24,11 @@
         </plugins>
     </build>
     <dependencies>
+
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>6.9.8</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>24.1-jre</version>
+            <version>6.8.7</version>
         </dependency>
     </dependencies>
 
