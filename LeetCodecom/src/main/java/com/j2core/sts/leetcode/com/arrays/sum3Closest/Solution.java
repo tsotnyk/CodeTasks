@@ -1,6 +1,5 @@
 package com.j2core.sts.leetcode.com.arrays.sum3Closest;
 
-import com.sun.xml.internal.xsom.impl.scd.Iterators;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
