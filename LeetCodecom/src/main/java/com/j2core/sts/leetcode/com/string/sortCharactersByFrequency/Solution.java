@@ -1,6 +1,5 @@
 package com.j2core.sts.leetcode.com.string.sortCharactersByFrequency;
 
-import javafx.beans.binding.StringBinding;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
