@@ -1,4 +1,4 @@
-package com.j2core.sts.leetcode.com.rangeSumOfBST;
+package com.j2core.sts.leetcode.com.binaryTreePruning;
 
 public class TreeNode {
 
