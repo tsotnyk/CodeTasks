@@ -36,3 +36,19 @@ Example 3: 1101102203
 Elements in this string are 1, 101, 102, 203.
 
 This is a simple problem of recursion, which includes determination of this elements programmatically and running these patterns.
+
+
+-------------------------------------------------------------------------------------
+!!!!!!!!!!!!!!!!!!!!! NON-FATAL MISTAKE IN TASK DESCRIPTION !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+Task examples contains mistake which most people don't see!!!
+
+> Example 2: 1112233558
+> Elements in this string are 1, 11, 12, 23, 35, 58
+
+                                ^^^^^^^^^^^^^^^^^  THIS IS WRONG !!!!!!!!!!
+                                It should be 11 12 23 35 58.
+
+                                For 1,11,12,23,58 sequence must be 11112233558
+
+-------------------------------------------------------------------------------------
