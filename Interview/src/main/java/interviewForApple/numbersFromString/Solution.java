@@ -1,4 +1,4 @@
-package com.j2core.sts.leetcode.com.numbersFromString;
+package interviewForApple.numbersFromString;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;

@@ -11,6 +11,13 @@
 
     <groupId>com.j2core.sts</groupId>
     <artifactId>Interview</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>6.11</version>
+        </dependency>
+    </dependencies>
 
 
 </project>
