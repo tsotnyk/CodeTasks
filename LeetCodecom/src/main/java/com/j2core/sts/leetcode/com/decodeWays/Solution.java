@@ -8,7 +8,6 @@ public class Solution {
     public int numDecodings(String s) {
 
         int length = s.length();
-        int counter = 1;
 
         if (length < 1){
             return 0;
@@ -16,6 +15,8 @@ public class Solution {
         if (length == 1){
             return 1;
         }
+
+        int counter = 1;
 
         for(int i = 0; i < length-1; i++){
 
