@@ -36,13 +36,4 @@ public class Solution {
             }
         }
     }
-
-    @Test
-    public void test(){
-
-        int[] array = new int[]{1,2,2,2,2,0,0,0,1,1};
-        sortColors(array);
-
-        System.out.println();
-    }
 }
