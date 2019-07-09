@@ -26,6 +26,5 @@ public class Solution {
             tail.next = nextNode;
 
             return helpNode.next;
-
     }
 }

@@ -1,7 +1,5 @@
 package com.j2core.sts.leetcode.com.swapNodesInPairs;
 
-import org.junit.Test;
-
 public class Solution {
 
     public ListNode swapPairs(ListNode head) {
@@ -37,17 +35,5 @@ public class Solution {
             last.next = tmpHead;
         }
         return head;
-    }
-
-    @Test
-    public void test(){
-
-        ListNode node = new ListNode(1);
-        node.next = new ListNode(2);
-        node.next.next = new ListNode(3);
-        node.next.next.next = new ListNode(4);
-        node.next.next.next.next = new ListNode(5);
-
-        ListNode result = swapPairs(node);
     }
 }
