@@ -1,12 +1,6 @@
 package com.j2core.sts.leetcode.com.longestStringChain;
 
-import org.testng.Assert;
-import org.testng.annotations.Test;
-
 import java.util.Arrays;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Map;
 
 public class Solution {
 
