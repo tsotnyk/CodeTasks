@@ -1,5 +1,8 @@
 package com.j2core.sts.leetcode.com.string.decodeString;
 
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
 /*
 The class given an encoded string, return it's decoded string.
  */
@@ -61,5 +64,14 @@ public class Solution {
             builder.append(tmpString);
         }
         return builder.toString();
+    }
+
+    @Test
+    public void test(){
+
+        Assert.assertEquals(decodeString("2[abc]"), "abcabc");
+        Assert.assertEquals(decodeString("2[abc]3[d]"), "abcabcddd");
+        Assert.assertEquals(decodeString("2[ab3[d]]"), "abdddabddd");
+
     }
 }
