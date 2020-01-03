@@ -2,57 +2,25 @@ package com.j2core.sts.leetcode.com.longestCommonSubsequence;
 
 import org.testng.annotations.Test;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class Solution {
 
     public int longestCommonSubsequence(String text1, String text2) {
 
-        if (text1 == null || text1.length() == 0 || text2 == null || text2.length() == 0) return 0;
+        int length = text1.length();
+        int len2 = text2.length();
+        int [][] result = new int [length+1][len2+1];
 
-        List<Character> repeatedChar = new ArrayList<>();
-
-        for (char ch : text1.toCharArray()){
-            if (text2.indexOf(ch) > -1){
-                repeatedChar.add(ch);
+        for(int i=1;i<result.length;i++){
+            for(int j=1;j<result[0].length;j++){
+                if(text1.charAt(i-1)==text2.charAt(j-1))
+                    result[i][j] = result[i-1][j-1]+1;
+                else
+                    result[i][j] = Math.max(result[i-1][j],result[i][j-1]);
             }
         }
-
-        if (repeatedChar.isEmpty()) return 0;
-        if (repeatedChar.size() == 1) return 1;
-
-        int result = 1;
-        List<List<Character>> tmpText = new LinkedList<>();
-        tmpText.add(repeatedChar);
-
-        while (!tmpText.isEmpty()){
-
-            int tmpResult = 0;
-            List<Character> word = tmpText.remove(0);
-            int index = 0;
-            for (int i = 0; i < text2.length() && index < word.size(); i++){
-                if (text2.charAt(i) == word.get(index)){
-                    index++;
-                    tmpResult++;
-                }
-            }
-
-            if (result < tmpResult){
-                result = tmpResult;
-            }
-
-            if (word.size()-1 > result){
-                List<Character> tmp;
-                for (int i = 0; i < word.size(); i++){
-                    tmp = new ArrayList<>(word);
-                    tmp.remove(i);
-                    tmpText.add(tmp);
-                }
-            }
-        }
-        return result;
+        return result[result.length-1][result[0].length-1];
     }
 
     @Test
