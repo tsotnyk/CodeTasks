@@ -1,8 +1,5 @@
 package com.j2core.sts.leetcode.com.deleteOperationForTwoStrings;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class Solution {
 
     public int minDistance(String word1, String word2) {
