@@ -1,4 +1,9 @@
 package com.j2core.sts.leetcode.com.airplaneSeatAssignmentProbability;
 
 public class Solution {
+
+    public double nthPersonGetsNthSeat(int n) {
+
+        return n > 1 ? 0.5 : 1;
+    }
 }
