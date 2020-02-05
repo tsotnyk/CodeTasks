@@ -4,60 +4,30 @@ public class Solution {
 
     public String strWithout3a3b(int A, int B) {
 
-        int amountSubstringA = A/2;
-        if (A%2 != 0){
-            amountSubstringA++;
-        }
-
-        int amountSubstringB = B/2;
-        if (B%2 != 0){
-            amountSubstringB++;
-        }
-
-        char first, second;
-        int indexFirst, indexSecond;
-        if (amountSubstringA >= amountSubstringB){
-            first = 'a';
-            second = 'b';
-            indexFirst = A;
-            indexSecond = B;
-        }else {
-            first = 'b';
-            second = 'a';
-            indexFirst = B;
-            indexSecond = A;
-        }
-
         StringBuilder builder = new StringBuilder();
 
-        while (indexFirst > 0 && indexSecond > 0){
-
-            builder.append(first);
-            indexFirst--;
-            if (indexFirst > 0){
-                builder.append(first);
-                indexFirst--;
+        if (A == 0 || B == 0){
+            while (A != 0){
+                builder.append("a");
+                A--;
             }
-            builder.append(second);
-            indexSecond--;
-            if (indexSecond > 0){
-                builder.append(second);
-                indexSecond--;
+            while (B != 0){
+                builder.append("b");
+                B--;
             }
+            return builder.toString();
         }
 
-        if (indexFirst > 0){
-            while (indexFirst > 0){
-                builder.append(first);
-                indexFirst--;
-            }
+        if (A > B){
+            builder.append("aab");
+            return builder.append(strWithout3a3b(A-2, B-1)).toString();
+        }else if (A == B){
+            builder.append("ab");
+            return builder.append(strWithout3a3b(A-1, B-1)).toString();
+        }else {
+            builder.append("bba");
+            return builder.append(strWithout3a3b(A-1, B-2)).toString();
         }
-        return builder.toString();
     }
 
-    private String createString(char first, char second){
-
-
-        return null;
-    }
 }

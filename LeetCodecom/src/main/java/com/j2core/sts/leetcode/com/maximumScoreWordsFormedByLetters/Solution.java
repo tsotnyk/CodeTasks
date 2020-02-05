@@ -3,59 +3,90 @@ package com.j2core.sts.leetcode.com.maximumScoreWordsFormedByLetters;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.Arrays;
+import java.util.Comparator;
 
 public class Solution {
 
     public int maxScoreWords(String[] words, char[] letters, int[] score) {
 
-        int[] lettersArray = createLettersArray(letters);
+        Comparator<String> comparator = new Comparator<String>() {
+            public int compare(String obj1, String obj2) {
+                return calculateScore(obj2, score) - calculateScore(obj1, score);
+            }
+        };
 
-        List<int[]> wordList = createWordList(words, lettersArray);
+        Arrays.sort(words, comparator);
+        int[] char_count = new int[26];
 
-        if (wordList.isEmpty()) return 0;
+        for (char ch : letters)
+            char_count[ch - 'a']++;
 
-        //todo
-
-        return 0;
+        return maxScore(words, char_count, score, 0);
     }
 
-    private List<int[]> createWordList(String[] words, int[] lettersArray){
-
-        List<int[]> result = new LinkedList<>();
-
-        for (String word : words){
-
-            int[] array = createLettersArray(word.toCharArray());
-            boolean flag = true;
-
-            for (int i = 0; i < lettersArray.length; i++){
-                if(lettersArray[i] < array[i]){
-                    flag = false;
-                    break;
-                }
-            }
-
-            if (flag){
-                result.add(array);
-            }else {
-                flag = true;
-            }
+    private int maxScore(String[] words, int[] letters, int[] score, int vidx) {
+        if (vidx == words.length || !chars_left(letters))
+            return 0;
+        int result = 0;
+        if (isPossible(words[vidx], letters)) {
+            apply(words[vidx], letters);
+            result = calculateScore(words[vidx], score) + maxScore(words, letters, score, vidx + 1);
+            remove(words[vidx], letters);
         }
+        result = Math.max(result, maxScore(words, letters, score, vidx + 1));
 
         return result;
     }
 
-    private int[] createLettersArray(char[] letters){
-
-        int[] result = new int[26];
-
-        for (int character : letters) {
-            result[character - 97] += 1;
+    private boolean isPossible(String word, int[] chars) {
+        apply(word, chars);
+        boolean isPossible = true;
+        for (int val : chars) {
+            if (val < 0) {
+                isPossible = false;
+                break;
+            }
         }
-        return result;
+        remove(word, chars);
+
+        return isPossible;
     }
+
+    private int calculateScore(String word, int[] score) {
+        int wordScore = 0;
+
+        for (int i = 0; i < word.length(); ++i) {
+            wordScore += score[word.charAt(i) - 'a'];
+        }
+
+        return wordScore;
+    }
+
+    private boolean chars_left(int[] letters) {
+        for (int val : letters)
+            if (val > 0)
+                return true;
+        return false;
+    }
+
+    private void remove(String word, int[] chars) {
+        for (int i = 0; i < word.length(); ++i) {
+            chars[word.charAt(i) - 'a']++;
+        }
+
+    }
+
+    private void apply(String word, int[] chars) {
+        for (int i = 0; i < word.length(); ++i) {
+            chars[word.charAt(i) - 'a']--;
+        }
+    }
+
+
+
+
+
 
     @Test
     public void test(){
