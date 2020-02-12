@@ -1,5 +1,7 @@
 package com.j2core.sts.leetcode.com.numberOfMatchingSubsequences;
 
+import java.util.Arrays;
+
 public class Solution {
 
     public int numMatchingSubseq(String S, String[] words) {
