@@ -5,9 +5,9 @@ import java.util.List;
 
 public class Solution {
 
-    public Interval[] intervalIntersection(Interval[] A, Interval[] B) {
+    public int[][] intervalIntersection(int[][] A, int[][] B) {
 
-        List<Interval> list = new LinkedList<>();
+        List<int[]> list = new LinkedList<>();
 
         int lengthA = A.length;
         int lengthB = B.length;
@@ -16,19 +16,17 @@ public class Solution {
 
         while (indexA < lengthA && indexB < lengthB){
 
-            Interval intervalA = A[indexA];
-            Interval intervalB = B[indexB];
+            int[] intervalA = A[indexA];
+            int[] intervalB = B[indexB];
 
-            if (intervalA.end < intervalB.start){
+            if (intervalA[1] < intervalB[0]){
                 indexA++;
-            }else if (intervalB.end < intervalA.start){
+            }else if (intervalB[1] < intervalA[0]){
                 indexB++;
             }else {
-                Interval newInterval = new Interval();
-                newInterval.start = Math.max(intervalA.start, intervalB.start);
-                newInterval.end = Math.min(intervalA.end, intervalB.end);
+                int[] newInterval = new int[]{Math.max(intervalA[0], intervalB[0]), Math.min(intervalA[1], intervalB[1])};
                 list.add(newInterval);
-                if (intervalA.end > intervalB.end){
+                if (intervalA[1] > intervalB[1]){
                     indexB++;
                 }else {
                     indexA++;
@@ -36,7 +34,7 @@ public class Solution {
             }
         }
 
-        Interval[] result = new Interval[list.size()];
+        int[][] result = new int[list.size()][];
         for (int i = 0; i < result.length; i++){
             result[i] = list.get(i);
         }
