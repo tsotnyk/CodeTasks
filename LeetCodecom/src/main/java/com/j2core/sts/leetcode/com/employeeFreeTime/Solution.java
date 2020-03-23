@@ -11,54 +11,6 @@ import java.util.List;
 public class Solution {
 
     public List<Interval> employeeFreeTime(List<List<Interval>> schedule) {
-
-        int min = -1;
-        int max = -1;
-        for (List<Interval> intervalList : schedule){
-            int length = intervalList.size();
-            Interval first = intervalList.get(0);
-            Interval last = intervalList.get(length-1);
-
-            if (min == -1 || min > first.start){
-                min = first.start;
-            }
-            if (max == -1 || max < last.end){
-                max = last.end;
-            }
-        }
-        int[] array = new int[max-min];
-
-        for (List<Interval> intervalList : schedule){
-            for (Interval interval : intervalList){
-                if (interval.start < min) min = interval.start;
-                if (interval.end > max) max = interval.end;
-                for (int i = interval.start-min; i < interval.end-min; i++){
-                    array[i] += 1;
-                }
-            }
-        }
-
-        int index = 0;
-        List<Interval> result = new LinkedList<>();
-        while (index < max-min){
-            if (array[index] == 0){
-                int start = index;
-                while (array[index] == 0){
-                    index++;
-                }
-                if (0 < index - start){
-                    result.add(new Interval(start+min, index+min));
-                }
-            }else {
-                index++;
-            }
-        }
-
-        return result;
-    }
-
-    public List<Interval> employeeFreeTimeNew(List<List<Interval>> schedule) {
-
         List<Interval> workTime = schedule.remove(0);
 
         while (!schedule.isEmpty()){
@@ -78,7 +30,6 @@ public class Solution {
     }
 
     private List<Interval> mergeTwoWorkList(List<Interval> list1, List<Interval> list2){
-
         List<Interval> result = new LinkedList<>();
         List<Interval> first; List<Interval> second;
 
@@ -120,33 +71,6 @@ public class Solution {
         return result;
     }
 
-
-
-    public List<Interval> employeeFreeTimeTMP(List<List<Interval>> schedule) {
-        int OPEN = 0, CLOSE = 1;
-
-        List<int[]> events = new ArrayList();
-        for (List<Interval> employee: schedule)
-            for (Interval iv: employee) {
-                events.add(new int[]{iv.start, OPEN});
-                events.add(new int[]{iv.end, CLOSE});
-            }
-
-        Collections.sort(events, (a, b) -> a[0] != b[0] ? a[0]-b[0] : a[1]-b[1]);
-        List<Interval> ans = new ArrayList();
-
-        int prev = -1, bal = 0;
-        for (int[] event: events) {
-            // event[0] = time, event[1] = command
-            if (bal == 0 && prev >= 0)
-                ans.add(new Interval(prev, event[0]));
-            bal += event[1] == OPEN ? 1 : -1;
-            prev = event[0];
-        }
-
-        return ans;
-    }
-
     @Test
     public void test(){
 
@@ -162,7 +86,7 @@ public class Solution {
         data.add(emp2);
         data.add(emp3);
 
-        Assert.assertEquals(employeeFreeTimeNew(data).size(), 1);
+        Assert.assertEquals(employeeFreeTime(data).size(), 1);
 
         List<Interval> emp11 = new LinkedList<>();
         emp11.add(new Interval(1,3));
@@ -177,7 +101,7 @@ public class Solution {
         data2.add(emp22);
         data2.add(emp33);
 
-        Assert.assertEquals(employeeFreeTimeNew(data2).size(), 2);
+        Assert.assertEquals(employeeFreeTime(data2).size(), 2);
 
         List<Interval> emp111 = new LinkedList<>();
         emp111.add(new Interval(43,76));
@@ -189,6 +113,6 @@ public class Solution {
         data3.add(emp111);
         data3.add(emp333);
 
-        Assert.assertEquals(employeeFreeTimeNew(data3).size(), 3);
+        Assert.assertEquals(employeeFreeTime(data3).size(), 3);
     }
 }
