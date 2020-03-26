@@ -1,5 +1,6 @@
 package com.j2core.sts.leetcode.com.findMedianFromDataStream;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -9,7 +10,7 @@ public class MedianFinder {
     /** initialize your data structure here. */
     public MedianFinder() {
 
-        this.store = new LinkedList<>();
+        this.store = new ArrayList<>();
     }
 
     public void addNum(int num) {
