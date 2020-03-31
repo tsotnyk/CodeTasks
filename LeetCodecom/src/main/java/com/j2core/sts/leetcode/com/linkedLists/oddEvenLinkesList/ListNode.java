@@ -1,9 +1,9 @@
-package com.j2core.sts.leetcode.com.linkedListCycle;
+package com.j2core.sts.leetcode.com.linkedLists.oddEvenLinkesList;
 
 public class ListNode {
 
     int val;
-    ListNode next = null;
+    ListNode next;
 
     public ListNode(int val) {
         this.val = val;

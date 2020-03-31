@@ -1,4 +1,4 @@
-package com.j2core.sts.leetcode.com.linkedListCycle;
+package com.j2core.sts.leetcode.com.linkedLists.linkedListCycle;
 
 public class Solution {
 
