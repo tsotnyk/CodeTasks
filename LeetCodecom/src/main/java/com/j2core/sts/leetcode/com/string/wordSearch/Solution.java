@@ -1,4 +1,4 @@
-package com.j2core.sts.leetcode.com.wordSearch;
+package com.j2core.sts.leetcode.com.string.wordSearch;
 
 
 public class Solution {

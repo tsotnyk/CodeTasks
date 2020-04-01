@@ -1,4 +1,4 @@
-package com.j2core.sts.leetcode.com.palindromeNumber;
+package com.j2core.sts.leetcode.com.palindromes.palindromeNumber;
 
 
 import org.testng.Assert;

@@ -1,7 +1,5 @@
-package com.j2core.sts.leetcode.com.palindromePairs;
+package com.j2core.sts.leetcode.com.palindromes.palindromePairs;
 
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 

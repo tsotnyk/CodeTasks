@@ -1,4 +1,4 @@
-package com.j2core.sts.leetcode.com.zigZagConversion;
+package com.j2core.sts.leetcode.com.string.zigZagConversion;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;

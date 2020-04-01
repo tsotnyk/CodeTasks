@@ -1,4 +1,4 @@
-package com.j2core.sts.leetcode.com.wildcardMatching;
+package com.j2core.sts.leetcode.com.string.wildcardMatching;
 
 public class Solution {
 
