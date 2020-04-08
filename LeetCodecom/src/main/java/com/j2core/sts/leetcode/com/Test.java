@@ -173,6 +173,8 @@ public class Test {
     @org.testng.annotations.Test
     public void test(){
 
+        boolean[] test = new boolean[5];
+
         List<String> tmp = new LinkedList<>();
         tmp.add("05.31");
         tmp.add("22.08");
