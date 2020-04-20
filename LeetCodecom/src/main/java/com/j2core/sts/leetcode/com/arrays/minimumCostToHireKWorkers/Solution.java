@@ -3,7 +3,6 @@ package com.j2core.sts.leetcode.com.arrays.minimumCostToHireKWorkers;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedList;
