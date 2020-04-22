@@ -4,12 +4,11 @@ package com.j2core.sts.leetcode.com.string.isomorphicStrings;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class Solution {
 
-    public boolean isIsomorphic(String s, String t) {
+    public boolean isIsomorphicOld(String s, String t) {
 
         List<Character> characterList = new LinkedList<>();
         int index;
@@ -59,13 +58,36 @@ public class Solution {
         return true;
     }
 
+    public boolean isIsomorphic(String s, String t) {
+
+        Map<Character, Character> lettersMap = new HashMap<>();
+        HashSet<Character> set = new HashSet<>();
+
+        for (int i = 0; i < s.length(); i++){
+            if (lettersMap.containsKey(s.charAt(i))){
+                if (!lettersMap.get(s.charAt(i)).equals(t.charAt(i))){
+                    return false;
+                }
+            }else {
+                if (set.contains(t.charAt(i))) return false;
+                lettersMap.put(s.charAt(i), t.charAt(i));
+                set.add(t.charAt(i));
+            }
+        }
+
+        return true;
+    }
 
     @Test
     public void test(){
 
         boolean result =  isIsomorphic("aab", "aaa");
 
-        Assert.assertTrue(result);
+        Assert.assertFalse(result);
+        Assert.assertFalse(isIsomorphic("foo", "bar"));
+        Assert.assertFalse(isIsomorphic("aba", "baa"));
+        Assert.assertTrue(isIsomorphic("egg", "add"));
+        Assert.assertTrue(isIsomorphic("paper", "title"));
 
     }
 }

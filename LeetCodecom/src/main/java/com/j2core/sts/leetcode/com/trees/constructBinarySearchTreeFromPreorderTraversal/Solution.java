@@ -3,8 +3,6 @@ package com.j2core.sts.leetcode.com.trees.constructBinarySearchTreeFromPreorderT
 import com.j2core.sts.leetcode.com.trees.TreeNode;
 import org.testng.annotations.Test;
 
-import java.util.ArrayList;
-
 public class Solution {
 
     public TreeNode bstFromPreorder(int[] preorder) {
