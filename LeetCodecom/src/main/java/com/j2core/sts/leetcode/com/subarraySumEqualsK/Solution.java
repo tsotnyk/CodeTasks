@@ -3,9 +3,12 @@ package com.j2core.sts.leetcode.com.subarraySumEqualsK;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class Solution {
 
-    public int subarraySum(int[] nums, int k) {
+    public int subarraySumOld(int[] nums, int k) {
 
         if (nums.length < 2){
             if(nums[0] == k){
@@ -32,6 +35,31 @@ public class Solution {
         }
     }
 
+    public int subarraySum(int[] nums, int k) {
+
+        int counter = 0;
+        int sum = 0;
+        LinkedList<Integer> sumList = new LinkedList<>();
+        sumList.add(0);
+
+        for (int i = 0; i < nums.length; i++){
+            sum += nums[i];
+            sumList.add(sum);
+        }
+
+        int delta = 0;
+
+        while (!sumList.isEmpty()){
+            delta += sumList.removeFirst()-delta;
+            for (int num : sumList){
+                if (num-delta == k){
+                    counter++;
+                }
+            }
+        }
+
+        return counter;
+    }
 
     @Test
     public void test(){

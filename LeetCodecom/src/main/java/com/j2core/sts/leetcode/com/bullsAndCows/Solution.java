@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class Solution {
 
-    public String getHint(String secret, String guess) {
+    public String getHintOld(String secret, String guess) {
 
         char[] secretArray = secret.toCharArray();
         char[] guessArray = guess.toCharArray();
@@ -61,4 +61,5 @@ public class Solution {
 
         return result;
     }
+
 }
