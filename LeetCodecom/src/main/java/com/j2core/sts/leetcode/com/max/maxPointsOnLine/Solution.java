@@ -1,4 +1,4 @@
-package com.j2core.sts.leetcode.com.maxPointsOnLine;
+package com.j2core.sts.leetcode.com.max.maxPointsOnLine;
 
 public class Solution {
 
