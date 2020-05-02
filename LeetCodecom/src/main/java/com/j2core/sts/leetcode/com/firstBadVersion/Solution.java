@@ -10,8 +10,31 @@ import org.testng.annotations.Test;
 
 public class Solution {
 
-
     public int firstBadVersion(int n) {
+
+        if (isBadVersion(1)) return 1;
+        int start = 1;
+        int end = n;
+        int median;
+
+        while (true){
+
+            if (!isBadVersion(end-1)){
+                return end;
+            }else {
+                median = (end-start)/2;
+                if (isBadVersion(end-median)){
+                    end = end-median;
+                }else {
+                    start = end-median;
+                }
+            }
+        }
+    }
+
+
+
+    public int firstBadVersionOld(int n) {
 
         int start = 1;
         int stop = n;
@@ -19,7 +42,7 @@ public class Solution {
         int result = -1;
         while (result < 0){
 
-            result = findBadVersion(start, stop, median);
+            result = findBadVersionOld(start, stop, median);
 
             if (result == -1){
                 stop = median;
@@ -32,7 +55,7 @@ public class Solution {
         return result;
     }
 
-    private int findBadVersion(int start, int stop, int median){
+    private int findBadVersionOld(int start, int stop, int median){
 
         int result = -2;
         if (isBadVersion(start)){
