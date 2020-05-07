@@ -1,11 +1,16 @@
 package com.j2core.sts.leetcode.com.arrays.majorityElement;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
 
 public class Solution {
 
 
-    public int majorityElement(int[] nums) {
+    public int majorityElementOld(int[] nums) {
 
         if (nums.length < 2){
 
@@ -68,13 +73,79 @@ public class Solution {
     }
 
 
+    public int majorityElement1(int[] nums) {
 
+        int half = nums.length/2+1;
 
+        Arrays.sort(nums);
+        for (int i = 0; i < nums.length; ){
 
+            int counter = 1;
+            int num = nums[i++];
+            while (i < nums.length && nums[i] == num){
+                counter++;
+                i++;
+            }
+            if (counter >= half) return num;
+        }
 
+        return 0;
+    }
 
+    public int majorityElement2(int[] nums) {
 
+        int half = (nums.length/2) + 1;
+        HashMap<Integer, Integer> map = new HashMap<>();
 
+        for (int i = 0; i < nums.length; i++){
+            int tmp = map.getOrDefault(nums[i], 0);
+            map.put(nums[i], ++tmp);
+            if (tmp >= half) return nums[i];
+        }
+
+        return 0;
+    }
+
+    public int majorityElement3(int[] nums) {
+
+        int half = (nums.length/2) + 1;
+        HashMap<Integer, Integer> map = new HashMap<>();
+        int[] array = new int[nums.length];
+        int index = 0;
+
+        for (int num : nums) {
+            int tmp = map.getOrDefault(num, index);
+            array[tmp] += 1;
+            if (array[tmp] >= half) return num;
+            if (tmp == index) {
+                map.put(num, index++);
+            }
+        }
+
+        return 0;
+    }
+
+    public int majorityElement(int[] nums) {
+
+        int half = (nums.length/2) + 1;
+        HashSet<Integer> set = new HashSet<>();
+
+        for (int i = 0; i < nums.length; i++){
+            if(!set.contains(nums[i])){
+                int num = nums[i];
+                int counter = 1;
+                for (int j = i+1; j < nums.length; j++){
+                    if (nums[j] == num){
+                        counter++;
+                    }
+                }
+                if (counter >= half) return num;
+                set.add(num);
+            }
+        }
+
+        return 0;
+    }
 
 //    public int majorityElement(int[] nums) {
 //
@@ -121,8 +192,6 @@ public class Solution {
         int[] tn = new int[]{3,2,3};
 
         int result = majorityElement(tn);
-
-        System.out.print(result);
-
+        Assert.assertEquals(result, 3);
     }
 }

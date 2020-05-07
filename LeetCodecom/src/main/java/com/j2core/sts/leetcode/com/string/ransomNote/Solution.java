@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class Solution {
 
-    public boolean canConstruct(String ransomNote, String magazine) {
+    public boolean canConstructOld(String ransomNote, String magazine) {
 
         Map<Character,Integer> map=new HashMap<>();
 
@@ -28,6 +28,27 @@ public class Solution {
                 map.remove(character);
             }
         }
+        return true;
+    }
+
+    public boolean canConstruct(String ransomNote, String magazine) {
+
+        int[] array = new int[126];
+
+        for (char character : magazine.toCharArray()){
+            int letter = character;
+            array[letter] += 1;
+        }
+
+        for (char character : ransomNote.toCharArray()){
+            int letter = character;
+            if (array[letter] == 0){
+                return false;
+            }else {
+                array[letter] -= 1;
+            }
+        }
+
         return true;
     }
 
