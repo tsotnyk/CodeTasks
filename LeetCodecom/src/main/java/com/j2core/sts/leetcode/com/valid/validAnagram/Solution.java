@@ -12,7 +12,7 @@ public class Solution {
      * @param s     second string
      * @return      first string is anagram of second string or not
      */
-    public boolean isAnagram(String t, String s) {
+    public boolean isAnagramOld(String t, String s) {
         if (s.length() != t.length()) return false;
 
         int amountLetterS;
@@ -45,6 +45,22 @@ public class Solution {
             }
         }
 
+        return true;
+    }
+
+    public boolean isAnagram(String s, String t) {
+
+        if (s.length() != t.length()) return false;
+
+        int[] characters = new int[126];
+
+        for (int i = 0; i < s.length(); i++){
+            characters[s.charAt(i)] += 1;
+        }
+        for (int j = 0; j < t.length(); j++){
+            if (characters[t.charAt(j)] == 0) return false;
+            characters[t.charAt(j)] -= 1;
+        }
         return true;
     }
 }
