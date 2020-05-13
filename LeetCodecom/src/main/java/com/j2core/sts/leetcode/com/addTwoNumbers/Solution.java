@@ -1,5 +1,8 @@
 package com.j2core.sts.leetcode.com.addTwoNumbers;
 
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
 /**
  * The class count two numbers
  */
@@ -12,7 +15,7 @@ public class Solution {
      * @param l2   second number witch wrote in the list node
      * @return     result numbers witch wrot in list node
      */
-    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+    public ListNode addTwoNumbersOld(ListNode l1, ListNode l2) {
 
         ListNode result = null;
         char[] numArray1 = createNumArray(l1);
@@ -95,6 +98,76 @@ public class Solution {
         }else return null;
     }
 
+
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+
+        if (l1 == null && l2 == null) return null;
+        if (l1 == null) return l2;
+        if (l2 == null) return l1;
+
+        ListNode root = null;
+        ListNode tmp = null;
+        int sum;
+        int delta = 0;
+
+        while (l1 != null && l2 != null){
+            sum = l1.val + l2.val + delta;
+            delta = 0;
+            if (sum > 9){
+                delta = sum/10;
+                sum %= 10;
+            }
+            if (root == null){
+                root = new ListNode(sum);
+                tmp = root;
+            }else {
+                tmp.next = new ListNode(sum);
+                tmp = tmp.next;
+            }
+            l1 = l1.next;
+            l2 = l2.next;
+        }
+
+        if (l1 == null && l2 == null){
+            if (delta != 0){
+                tmp.next = new ListNode(delta);
+            }
+            return root;
+        }
+
+        ListNode node = l1 != null ? l1 : l2;
+
+        while (delta != 0) {
+            if (node == null){
+                tmp.next = new ListNode(delta);
+                tmp = tmp.next;
+                break;
+            }
+            sum = node.val + delta;
+            delta = 0;
+            if (sum > 9) {
+                delta = sum / 10;
+                sum %= 10;
+            }
+            tmp.next = new ListNode(sum);
+            tmp = tmp.next;
+            node = node.next;
+        }
+
+        tmp.next = node;
+        return root;
+
+    }
+
+    @Test
+    public void test(){
+
+        ListNode root1 = new ListNode(1);
+        ListNode root2 = new ListNode(9);
+        root2.next = new ListNode(9);
+        Assert.assertNotNull(addTwoNumbers(root1, root2));
+
+    }
 }
 
 

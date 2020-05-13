@@ -1,5 +1,8 @@
 package com.j2core.sts.leetcode.com.linkedLists.mergeTwoSortedLists;
 
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -15,7 +18,7 @@ public class Solution {
      * @param l2     second sorted list
      * @return       result sorted list
      */
-    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+    public ListNode mergeTwoListsOld(ListNode l1, ListNode l2) {
 
         int[] arrayResult = null;
         int[] array1 = createNumArray(l1);
@@ -96,5 +99,49 @@ public class Solution {
 
             return result;
         }else return null;
+    }
+
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+
+        if (l1 == null && l2 == null) return null;
+        if (l1 == null) return l2;
+        if (l2 == null) return l1;
+
+        ListNode root = null;
+        ListNode tmpRoot = null;
+
+        while (l1 != null && l2 != null){
+            ListNode tmp;
+            if (l1.val <= l2.val){
+                tmp = l1;
+                l1 = l1.next;
+                tmp.next = null;
+            }else {
+                tmp = l2;
+                l2 = l2.next;
+                tmp.next = null;
+            }
+            if (root == null){
+                root = tmp;
+                tmpRoot = root;
+            }else {
+                tmpRoot.next = tmp;
+                tmpRoot = tmpRoot.next;
+            }
+        }
+
+        ListNode node = l1 != null ? l1 : l2;
+
+        tmpRoot.next = node;
+        return root;
+    }
+
+    @Test
+    public void test(){
+
+        ListNode root1 = null;
+        ListNode root2 = new ListNode(0);
+        Assert.assertNotNull(mergeTwoLists(root1, root2));
+
     }
 }
