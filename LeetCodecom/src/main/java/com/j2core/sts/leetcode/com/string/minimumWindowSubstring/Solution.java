@@ -4,11 +4,13 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class Solution {
 
-    public String minWindow(String s, String t) {
+    public String minWindowOld(String s, String t) {
 
         if (s.length() < t.length()) return "";
 
@@ -96,10 +98,86 @@ public class Solution {
         return map;
     }
 
+    public String minWindow(String s, String t) {
+
+        if (s.length() == t.length()) return equalsString(s, t) ? s : "";
+        if (s.length() < t.length()) return "";
+
+        String result = "";
+
+        int indexStart = 0;
+        int index = t.length();
+        String tmpStr = s.substring(indexStart, index);
+        Map<Character, Integer> tMap = createCharMap(t);
+        Map<Character, Integer> sBase = createCharMap(tmpStr);
+
+        while (indexStart <= s.length()-t.length()){
+            if (containString(sBase, tMap)){
+                if (result.length() == 0){
+                    result = tmpStr;
+                }else {
+                    result = result.length() > tmpStr.length() ? tmpStr : result;
+                }
+                sBase.put(s.charAt(indexStart), sBase.get(s.charAt(indexStart))-1);
+                indexStart++;
+                if (indexStart < s.length()) {
+                    index = indexStart == index ? ++index : index;
+                    tmpStr = s.substring(indexStart, index);
+                }
+            }else {
+                if (index < s.length()) {
+                    sBase.put(s.charAt(index), sBase.getOrDefault(s.charAt(index), 0) + 1);
+                    index++;
+                    tmpStr = s.substring(indexStart, index);
+                }else{
+                    indexStart++;
+                }
+            }
+        }
+
+        return result;
+    }
+
+    private boolean containString(Map<Character, Integer> sBase, Map<Character, Integer> tMap){
+
+        for (Map.Entry<Character, Integer> entry : tMap.entrySet()){
+            int tmp = sBase.getOrDefault(entry.getKey(), -1);
+            if (tmp == -1 || tmp < entry.getValue()){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private boolean equalsString(String s, String t){
+
+        int[] array = new int[126];
+        for (int i = 0; i < s.length(); i++){
+            array[s.charAt(i)] += 1;
+        }
+        for (int j = 0; j < t.length(); j++){
+            if (array[t.charAt(j)] == 0){
+                return false;
+            }else {
+                array[t.charAt(j)] -= 1;
+            }
+        }
+
+        return true;
+    }
+
     @Test
     public void test(){
 
-//        Assert.assertEquals(minWindow("ADOBECODEBANC", "ABC"), "BANC");
+        Assert.assertEquals(minWindow("babb", "baba"), "");
+
+        Assert.assertEquals(minWindow("ab", "b"), "b");
+
+        Assert.assertEquals(minWindow("bbaa", "aba"), "baa");
+        Assert.assertEquals(minWindow("abc", "cba"), "abc");
+
+        Assert.assertEquals(minWindow("ab", "a"), "a");
+        Assert.assertEquals(minWindow("ADOBECODEBANC", "ABC"), "BANC");
         Assert.assertEquals(minWindow("ab", "A"), "");
 
     }
