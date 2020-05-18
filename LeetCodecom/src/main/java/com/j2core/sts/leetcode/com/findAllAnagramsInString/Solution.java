@@ -7,7 +7,7 @@ import java.util.*;
 
 public class Solution {
 
-    public List<Integer> findAnagrams(String s, String p) {
+    public List<Integer> findAnagramsOld(String s, String p) {
 
         List<Integer> result = new LinkedList<>();
 
@@ -94,6 +94,50 @@ public class Solution {
         }
 
         return true;
+    }
+
+    public List<Integer> findAnagrams(String s, String p) {
+
+        int[] findStr = createArray(p);
+        int first = 0;
+        int last = p.length();
+        List<Integer> result = new LinkedList<>();
+
+        while (last <= s.length()){
+
+            if (findStr[s.charAt(first)] > 0) {
+                if (isAnagram(findStr.clone(), s.substring(first, last))) {
+                    result.add(first);
+                }
+            }
+            first++;
+            last++;
+        }
+
+        return result;
+    }
+
+    private boolean isAnagram(int[] base, String string){
+
+        for (int i = 0; i < string.length(); i++){
+            if (base[string.charAt(i)]  < 1) return false;
+            base[string.charAt(i)] -= 1;
+        }
+
+        return true;
+    }
+
+    private int[] createArray(String string){
+
+        int[] array = new int[126];
+
+        for (char tmp : string.toCharArray()){
+
+            array[tmp] += 1;
+
+        }
+
+        return array;
     }
 
 
