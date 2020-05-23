@@ -24,6 +24,42 @@ public class StockSpanner {
         return span;
     }
 
+    public int tmp(int[] prices){
+
+        int max = 1;
+        int counterMin = 1;
+        int counterMax = 1;
+        int num = prices[0];
+
+        for (int i = 1; i < prices.length;){
+            if (num < prices[i]){
+                counterMax++;
+                num = prices[i++];
+                while (i < prices.length && num < prices[i]){
+                    counterMax++;
+                    num = prices[i];
+                    i++;
+                }
+                max = Math.max(max, counterMax);
+                counterMax = 1;
+            }else {
+                counterMin++;
+                num = prices[i++];
+                while (i < prices.length && num < prices[i]){
+                    counterMin++;
+                    num = prices[i];
+                    i++;
+                }
+                max = Math.max(max, counterMin);
+                counterMin = 1;
+            }
+            i++;
+        }
+
+        return max;
+    }
+
+
 
 //    Stack<Info> collection;
 //

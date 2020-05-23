@@ -42,9 +42,9 @@ public class Solution {
     @Test
     public void test(){
 
-        int result = lengthOfLongestSubstring("ab");
+        int result = lengthOfLongestSubstring("dvdf");
 
-        Assert.assertEquals(result, 2);
+        Assert.assertEquals(result, 3);
     }
 
 }
