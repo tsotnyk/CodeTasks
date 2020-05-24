@@ -34,11 +34,6 @@ public class Solution {
             }
         }
 
-        int[][] result = new int[list.size()][];
-        for (int i = 0; i < result.length; i++){
-            result[i] = list.get(i);
-        }
-
-        return result;
+        return list.toArray(new int[list.size()][]);
     }
 }
