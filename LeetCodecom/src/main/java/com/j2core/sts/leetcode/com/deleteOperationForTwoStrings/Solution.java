@@ -37,32 +37,6 @@ public class Solution {
         return word1.length() + word2.length() - 2 * dp[word1.length()][word2.length()];
     }
 
-    public int count(String bracket_string){
-        if (bracket_string == null) return 0;
-        int counter = 0;
-
-        for (int i = 0; i < bracket_string.length(); i++){
-            if (bracket_string.charAt(i) == '('){
-                counter++;
-            }else {
-                counter--;
-            }
-        }
-
-        return Math.abs(counter);
-    }
-
-
-    @Test
-    public void test3(){
-
-
-        Assert.assertEquals(count("(()())"), 0);
-        Assert.assertEquals(count("())"), 1);
-        Assert.assertEquals(count("((())"), 1);
-
-    }
-
     @Test
     public void test(){
 
