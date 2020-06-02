@@ -1,4 +1,4 @@
-package com.j2core.sts.leetcode.com.trees;
+package com.j2core.sts.leetcode.com.crackingCodingInterview.chapter4;
 
 public class TreeNode {
 
