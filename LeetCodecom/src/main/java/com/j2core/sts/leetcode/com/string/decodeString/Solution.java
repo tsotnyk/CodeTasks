@@ -14,7 +14,7 @@ public class Solution {
      * @param s     string for decode
      * @return      decoded string
      */
-    public String decodeString(String s) {
+    public String decodeStringOld(String s) {
 
         String result = s;
         char openBracket = '[';
@@ -64,6 +64,37 @@ public class Solution {
             builder.append(tmpString);
         }
         return builder.toString();
+    }
+
+    public String decodeString(String s) {
+
+        int indexOpen = s.lastIndexOf('[');
+        String str = s;
+        while (indexOpen != -1){
+
+            str = openBracket(str, indexOpen);
+            indexOpen = str.lastIndexOf('[');
+        }
+
+        return str;
+    }
+
+    private String openBracket(String string, int index) {
+
+        int last = string.indexOf(']', index);
+        StringBuilder builder = new StringBuilder();
+        int first = index-1;
+        while (first > 0 && Character.isDigit(string.charAt(first-1))){
+            first--;
+        }
+        int counter = Integer.parseInt(string.substring(first, index));
+
+        while (counter > 0){
+            builder.append(string.substring(index+1, last));
+            counter--;
+        }
+
+        return string.substring(0, first) + builder.toString() + string.substring(last+1);
     }
 
     @Test
