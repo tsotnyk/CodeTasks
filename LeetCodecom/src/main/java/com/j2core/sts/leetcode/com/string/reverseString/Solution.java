@@ -2,7 +2,7 @@ package com.j2core.sts.leetcode.com.string.reverseString;
 
 public class Solution {
 
-    public String reverseString(String s) {
+    public String reverseStringOld(String s) {
 
         StringBuilder builder = new StringBuilder();
 
@@ -14,5 +14,21 @@ public class Solution {
 
         return builder.toString();
 
+    }
+
+
+    public void reverseString(char[] s) {
+
+        int indexStart = 0;
+        int indexEnd = s.length-1;
+
+        while (indexStart < indexEnd){
+
+            char tmp = s[indexStart];
+            s[indexStart] = s[indexEnd];
+            s[indexEnd] = tmp;
+            indexStart++;
+            indexEnd--;
+        }
     }
 }
