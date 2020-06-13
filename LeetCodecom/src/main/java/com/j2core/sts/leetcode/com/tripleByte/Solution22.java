@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 
 public class Solution22 {
 
-    public static int deletion_distance(String str1, String str2){
+    public static int deletion_distance1(String str1, String str2){
 
         if (str1.length() < 1) return str2.length();
         if (str2.length() < 1) return str1.length();
@@ -31,6 +31,26 @@ public class Solution22 {
         }
 
         return (matrix[str1.length()][str2.length()]);
+    }
+
+    public int deletion_distance(String str1, String str2) {
+
+        int[] deleteDistances = new int[str2.length()+1];
+        for(int i = 1; i <= str1.length(); i++){
+            int deleteDistance = 0;
+            for(int j = 1; j<= str2.length(); j++){
+                int tmpDeleteDistance = deleteDistances[j];
+                if(str1.charAt(i-1) == str2.charAt(j-1)) {
+                    deleteDistances[j] = deleteDistance + 1;
+                } else {
+                    deleteDistances[j] = Math.max(deleteDistances[j],deleteDistances[j-1]);
+                }
+
+                deleteDistance = tmpDeleteDistance;
+            }
+        }
+
+        return str1.length() + str2.length() - 2*deleteDistances[str2.length()];
     }
 
     @Test

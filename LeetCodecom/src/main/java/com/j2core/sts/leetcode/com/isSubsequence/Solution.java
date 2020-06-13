@@ -17,6 +17,7 @@ public class Solution {
             indexBase++;
         }
 
+
         return index == length;
     }
 }
