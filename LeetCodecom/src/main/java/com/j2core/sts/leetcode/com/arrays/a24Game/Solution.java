@@ -17,25 +17,31 @@ public class Solution {
         combinations.add(base);
         int counter = 1;
 
-        while (counter < nums.length){
+        while (counter < nums.length) {
             ArrayList<ArrayList<Double>> tmpCombinations = new ArrayList<>();
             while (!combinations.isEmpty()) {
                 base = combinations.remove(0);
-                for (int i = 1; i <= nums.length-counter; i++) {
-                    ArrayList<Double> tmpBase = new ArrayList<>(base);
-                    tmpBase.remove(i-1);
-                    ArrayList<Double> tmp1 = new ArrayList<>(tmpBase);
-                    tmp1.set(i-1, base.get(i-1)+ base.get(i));
-                    tmpCombinations.add(tmp1);
-                    ArrayList<Double> tmp2 = new ArrayList<>(tmpBase);
-                    tmp2.set(i-1, base.get(i-1)-base.get(i));
-                    tmpCombinations.add(tmp2);
-                    ArrayList<Double> tmp3 = new ArrayList<>(tmpBase);
-                    tmp3.set(i-1, base.get(i-1)*base.get(i));
-                    tmpCombinations.add(tmp3);
-                    ArrayList<Double> tmp4 = new ArrayList<>(tmpBase);
-                    tmp4.set(i-1, base.get(i-1)/base.get(i));
-                    tmpCombinations.add(tmp4);
+                for (int i = 0; i < base.size(); i++) {
+                    for (int j = 0; j < base.size(); j++) {
+                        if (j != i) {
+                            ArrayList<Double> tmp1 = new ArrayList<>(base);
+                            tmp1.set(i, base.get(i) + base.get(j));
+                            tmp1.remove(j);
+                            tmpCombinations.add(tmp1);
+                            ArrayList<Double> tmp2 = new ArrayList<>(base);
+                            tmp2.set(i, base.get(i) - base.get(j));
+                            tmp2.remove(j);
+                            tmpCombinations.add(tmp2);
+                            ArrayList<Double> tmp3 = new ArrayList<>(base);
+                            tmp3.set(i, base.get(i) * base.get(j));
+                            tmp3.remove(j);
+                            tmpCombinations.add(tmp3);
+                            ArrayList<Double> tmp4 = new ArrayList<>(base);
+                            tmp4.set(i, base.get(i) / base.get(j));
+                            tmp4.remove(j);
+                            tmpCombinations.add(tmp4);
+                        }
+                    }
                 }
             }
             combinations = tmpCombinations;
@@ -47,6 +53,7 @@ public class Solution {
         }
         return false;
     }
+
 
     @Test
     public void test(){
