@@ -20,23 +20,27 @@ public class Solution {
 
         HashMap<Integer, List<int[]>> graph = createGraph(times);
         int index = K;
-
-        while (N-- > 1){
+        List<int[]> rows = graph.getOrDefault(K, new ArrayList<>());
+        int counter = 0;
+        while (counter++ < N){
              visit[index] = true;
-             if (graph.containsKey(index)) {
-                 for (int[] time : graph.get(index)) {
-                     length[time[1]] = Math.min(length[index] + time[2], length[time[1]]);
-                 }
-             }
-             index = findSmallerLength(length, visit);
+
+            for (int[] time : rows) {
+                length[time[1]] = Math.min(length[index] + time[2], length[time[1]]);
+            }
+
+            index = findSmallerLength(length, visit);
+            rows = graph.getOrDefault(index, new ArrayList<>());
+
         }
 
         int maxLength = 0;
 
         for (int num : length){
-            if (num < Integer.MAX_VALUE) {
-                maxLength = Math.max(maxLength, num);
+            if (num == Integer.MAX_VALUE) {
+               return -1;
             }
+            maxLength = Math.max(maxLength, num);
         }
         return maxLength == 0 ? -1 : maxLength;
     }
@@ -73,9 +77,9 @@ public class Solution {
     @Test
     public void test(){
 
-        Assert.assertEquals(networkDelayTime(new int[][]{{1,3,1},{2,3,2},{1,2,1}}, 3, 2), -1);
+        Assert.assertEquals(networkDelayTime(new int[][]{{1,2,1},{2,3,2},{1,3,1}}, 3, 2), -1);
 
-        Assert.assertEquals(networkDelayTime(new int[][]{{2,1,1}}, 2, 1), -1);
+        Assert.assertEquals(networkDelayTime(new int[][]{{1,2,1}}, 2, 2), -1);
 
         Assert.assertEquals(networkDelayTime(new int[][]{{2,1,1},{2,3,1},{3,4,1}}, 4, 2), 2);
 

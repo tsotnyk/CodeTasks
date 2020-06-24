@@ -31,8 +31,17 @@ public class Solution4 {
         return minOperation;
     }
 
+
+
     @Test
     public void test(){
+
+        Float f1 = new Float("3.0");
+        int x = f1.intValue();
+        byte b = f1.byteValue();
+        double d = f1.doubleValue();
+
+        System. out.println(x+b+d);
 
         List<Integer> list = new ArrayList<Integer>(Arrays.asList(1,2,3,4,5));
 
