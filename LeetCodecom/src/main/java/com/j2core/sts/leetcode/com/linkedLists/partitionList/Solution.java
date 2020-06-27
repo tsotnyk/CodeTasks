@@ -1,5 +1,7 @@
 package com.j2core.sts.leetcode.com.linkedLists.partitionList;
 
+import org.testng.annotations.Test;
+
 public class Solution {
 
     public ListNode partition(ListNode head, int x) {

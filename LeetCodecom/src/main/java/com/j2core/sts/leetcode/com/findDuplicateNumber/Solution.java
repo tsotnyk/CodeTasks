@@ -3,10 +3,14 @@ package com.j2core.sts.leetcode.com.findDuplicateNumber;
 import org.junit.Assert;
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+
 public class Solution {
 
 
-    public int findDuplicate(int[] nums) {
+    public int findDuplicateOld(int[] nums) {
 
         for (int i = 0; i < nums.length-1; i++){
             int num = nums[i];
@@ -19,6 +23,30 @@ public class Solution {
         }
         return 0;
     }
+
+    public int findDuplicateSet(int[] nums) {
+
+        HashSet<Integer> set = new HashSet<>();
+
+        for (int num : nums){
+            if (set.contains(num)) return num;
+            set.add(num);
+        }
+
+        return 0;
+    }
+
+    public int findDuplicate(int[] nums) {
+
+        Arrays.sort(nums);
+
+        for (int i = 1; i < nums.length; i++){
+            if (nums[i] == nums[i-1]) return nums[i];
+        }
+
+        return 0;
+    }
+
 
     @Test
     public void test(){

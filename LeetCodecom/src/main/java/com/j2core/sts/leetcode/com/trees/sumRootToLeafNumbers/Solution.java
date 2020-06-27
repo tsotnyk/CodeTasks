@@ -4,12 +4,13 @@ import com.j2core.sts.leetcode.com.trees.TreeNode;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 public class Solution {
 
-    public int sumNumbers(TreeNode root) {
+    public int sumNumbersOld(TreeNode root) {
 
         if (root == null) return 0;
         LinkedList<Integer> numbers = new LinkedList<>();
@@ -43,8 +44,21 @@ public class Solution {
         }
     }
 
+    public int sumNumbers(TreeNode root) {
+
+        int sum = 0;
+
+        List<List<TreeNode>> leafList = new ArrayList<>();
+
+         return 0;
+
+    }
+
     @Test
     public void test(){
+
+
+
 
         TreeNode node = new TreeNode(4);
         node.left = new TreeNode(9);
@@ -54,4 +68,6 @@ public class Solution {
 
         Assert.assertEquals(sumNumbers(node), 1026);
     }
+
+
 }
