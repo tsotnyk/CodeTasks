@@ -11,7 +11,7 @@ public class Solution {
      * @param s     basic string
      * @return      longest palindromic
      */
-    public String longestPalindrome(String s) {
+    public String longestPalindromeOld(String s) {
 
         if (s == null || s.length() == 0) return "";
         if (s.length() == 1) return s;
@@ -57,5 +57,30 @@ public class Solution {
             }
         }
         return result.toString();
+    }
+
+    public String longestPalindrome(String s) {
+
+        int maxLength = 1;
+
+        for (int i = 0; i < s.length(); ){
+
+            int right = i-1;
+            int left = i+1;
+
+            while (left < s.length() && s.charAt(left) == s.charAt(i)){
+                left++;
+            }
+
+            while (right > -1 && s.charAt(right) == s.charAt(i)){
+                right--;
+            }
+
+            if (right == -1) {
+
+            }
+        }
+
+        return null;
     }
 }

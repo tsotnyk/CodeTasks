@@ -3,12 +3,14 @@ package com.j2core.sts.leetcode.com.trees.binaryTreeLevelOrderTraversalII;
 import com.j2core.sts.leetcode.com.trees.TreeNode;
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
 public class Solution {
 
-    public List<List<Integer>> levelOrderBottom(TreeNode root) {
+    public List<List<Integer>> levelOrderBottomOld(TreeNode root) {
 
         if (root == null) return new LinkedList<>();
 
@@ -47,6 +49,31 @@ public class Solution {
 
         return result;
 
+    }
+
+    public List<List<Integer>> levelOrderBottom(TreeNode root) {
+
+        if (root == null) return new ArrayList<>();
+
+        List<List<Integer>> result = new ArrayList<>();
+        ArrayList<TreeNode> level = new ArrayList<>(Arrays.asList(root));
+        while (!level.isEmpty()){
+            ArrayList<TreeNode> nextLevel = new ArrayList<>();
+            ArrayList<Integer> values = new ArrayList<>();
+            for (TreeNode node : level){
+                if (node.left != null){
+                    nextLevel.add(node.left);
+                }
+                if (node.right != null){
+                    nextLevel.add(node.right);
+                }
+                values.add(node.val);
+            }
+            level = nextLevel;
+            result.add(0, values);
+        }
+
+        return result;
     }
 
     @Test

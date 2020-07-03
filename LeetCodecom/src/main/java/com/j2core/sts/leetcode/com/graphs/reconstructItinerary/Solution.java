@@ -9,7 +9,7 @@ public class Solution {
 
     private Map<String, PriorityQueue<String>> map;
     private List<String> res;
-    public List<String> findItinerary(List<List<String>> tickets) {
+    public List<String> findItineraryOld(List<List<String>> tickets) {
         map = new HashMap<>();
         for(List<String> list: tickets) {
             if(!map.containsKey(list.get(0))) map.put(list.get(0), new PriorityQueue<>());
@@ -31,6 +31,39 @@ public class Solution {
         res.add(0, start);
     }
 
+    public List<String> findItinerary(List<List<String>> tickets) {
+
+        HashMap<String, PriorityQueue<String>> ticketsMap = new HashMap<>();
+
+        for (List<String> list : tickets){
+            if (ticketsMap.containsKey(list.get(0))){
+                ticketsMap.get(list.get(0)).add(list.get(1));
+            }else {
+                ticketsMap.put(list.get(0), new PriorityQueue<>(Arrays.asList(list.get(1))));
+            }
+            if (!ticketsMap.containsKey(list.get(1))){
+                ticketsMap.put(list.get(1), new PriorityQueue<>());
+            }
+        }
+
+        LinkedList<String> result = new LinkedList<>();
+
+        dfs(ticketsMap, "JFK", result);
+        return result;
+    }
+
+
+    private void dfs(HashMap<String, PriorityQueue<String>> map, String root, LinkedList<String> result){
+
+        PriorityQueue<String> queue = map.get(root);
+
+        while (!queue.isEmpty()){
+            dfs(map, queue.poll(), result);
+        }
+
+        result.addFirst(root);
+    }
+
     @Test
     public void test(){
 
@@ -45,4 +78,5 @@ public class Solution {
 
         Assert.assertEquals(result.size(), 6);
     }
+
 }

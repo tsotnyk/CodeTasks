@@ -14,6 +14,35 @@ public class Solution {
         for (int i = 0; i < grid.length; i++){
             for (int j = 0; j < grid[0].length; j++){
                 if (grid[i][j] == '1'){
+                    counter++;
+                    changeValue(grid, i, j);
+                }
+            }
+        }
+
+        return counter;
+    }
+
+    private void changeValue(char[][] grid, int i, int j){
+
+        if (i > -1 && i < grid.length && j > -1 && j < grid[0].length){
+            if (grid[i][j] == '1'){
+                grid[i][j] = '2';
+
+                changeValue(grid, i-1, j);
+                changeValue(grid, i+1, j);
+                changeValue(grid, i, j-1);
+                changeValue(grid, i, j+1);
+            }
+        }
+    }
+
+    public int numIslands1(char[][] grid) {
+
+        int counter = 0;
+        for (int i = 0; i < grid.length; i++){
+            for (int j = 0; j < grid[0].length; j++){
+                if (grid[i][j] == '1'){
                     markIsland(grid, i, j);
                     counter++;
                 }
@@ -93,11 +122,11 @@ public class Solution {
     @Test
     public void test(){
 
-        Assert.assertEquals(1, numIslands(new char[][]{{'1', '1', '1', '1', '0'},{'1', '1', '0', '1', '0'},{'1', '1', '0', '0', '0'},{'0', '0', '0', '0', '0'}}));
+        Assert.assertEquals(numIslands(new char[][]{{'1', '1', '1', '1', '0'},{'1', '1', '0', '1', '0'},{'1', '1', '0', '0', '0'},{'0', '0', '0', '0', '0'}}), 1);
 
-        Assert.assertEquals(3, numIslands(new char[][]{{'1', '1', '0', '0', '0'},{'1', '1', '0', '0', '0'},{'0', '0', '1', '0', '0'},{'0', '0', '0', '1', '1'}}));
-        Assert.assertEquals(1, numIslands(new char[][]{{'1', '1', '1'},{ '0', '1', '0'},{'0', '1', '0'}}));
-        Assert.assertEquals(1, numIslands(new char[][]{{'1', '1', '1'},{ '0', '1', '0'},{'1', '1', '1'}}));
+        Assert.assertEquals(numIslands(new char[][]{{'1', '1', '0', '0', '0'},{'1', '1', '0', '0', '0'},{'0', '0', '1', '0', '0'},{'0', '0', '0', '1', '1'}}), 3);
+        Assert.assertEquals(numIslands(new char[][]{{'1', '1', '1'},{ '0', '1', '0'},{'0', '1', '0'}}), 1);
+        Assert.assertEquals(numIslands(new char[][]{{'1', '1', '1'},{ '0', '1', '0'},{'1', '1', '1'}}), 1);
 
 
     }
