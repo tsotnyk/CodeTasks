@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 
 public class Solution {
 
-    public int myAtoi(String str) {
+    public int myAtoi1(String str) {
 
         if (str.length() < 1) return 0;
 
@@ -71,8 +71,59 @@ public class Solution {
         return index == -1 ? srt : srt.substring(index);
     }
 
+    public int myAtoi(String str) {
+
+        str = str.trim();
+
+        if (str.length() < 1) return 0;
+        boolean negativeNum = false;
+
+        char firstSymbol = str.charAt(0);
+        if (!Character.isDigit(firstSymbol) && firstSymbol != '-' && firstSymbol != '+') return 0;
+        int index = 0;
+        if (firstSymbol == '-') {
+            negativeNum = true;
+            index++;
+        }else if (firstSymbol == '+'){
+            index++;
+        }
+        int lastDelta = negativeNum ? 8 : 7;
+        int oneStepBackNum = Integer.MAX_VALUE/10;
+        int sum = 0;
+        while (index < str.length()){
+
+            char symbol = str.charAt(index);
+            if (Character.isDigit(symbol)){
+                int num = (int) symbol - (int)'0';
+                if (sum > oneStepBackNum){
+                    return negativeNum ? Integer.MIN_VALUE : Integer.MAX_VALUE;
+                }else if (sum == oneStepBackNum){
+                    if (num >= lastDelta){
+                        return negativeNum ? Integer.MIN_VALUE : Integer.MAX_VALUE;
+                    } else {
+                        sum *= 10;
+                        sum += num;
+                    }
+                }else {
+                    sum *= 10;
+                    sum += num;
+                }
+            }else {
+                break;
+            }
+            index++;
+        }
+
+        return negativeNum ? sum*-1 : sum;
+    }
+
     @Test
     public void test(){
+
+        Assert.assertEquals(myAtoi("-2147483647"), -2147483647);
+
+
+        Assert.assertEquals(myAtoi("2147483646"), 2147483646);
 
         Integer result = myAtoi("42");
 

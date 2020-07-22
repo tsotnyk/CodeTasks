@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Solution {
 
-    public String reverseWords(String s) {
+    public String reverseWordsOld(String s) {
 
         if (s.length() < 1) return s;
 
@@ -59,13 +59,43 @@ public class Solution {
         return result;
     }
 
+    public String reverseWords(String s) {
+
+        if (s.length() < 1) return s;
+
+        StringBuilder builder = new StringBuilder();
+
+        int indexEnd = s.length()-1;
+        int indexStart = indexEnd;
+
+        while (indexEnd > -1){
+
+            if (s.charAt(indexEnd) != ' '){
+                indexStart = indexEnd;
+                while (indexStart > -1 && s.charAt(indexStart) != ' '){
+                    indexStart--;
+                }
+                builder.append(s.substring(indexStart+1, indexEnd+1)).append(" ");
+                indexEnd = indexStart;
+
+            }
+            indexEnd--;
+        }
+
+        return builder.length() > 0 ? builder.toString().substring(0, builder.length()-1) : "";
+    }
+
 
     @Test
     public void test(){
 
-        String result = reverseWords("a     ");
+//        String result = reverseWords("a     ");
+//
+//        Assert.assertEquals(result, "a");
+        Assert.assertEquals(reverseWords("    hello word!   "), "word! hello");
 
-        Assert.assertEquals(result, "");
+
+        Assert.assertEquals(reverseWords("the sky is blue"), "blue is sky the");
 
     }
 

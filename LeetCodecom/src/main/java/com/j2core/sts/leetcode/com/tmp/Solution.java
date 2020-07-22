@@ -1,75 +1,81 @@
 package com.j2core.sts.leetcode.com.tmp;
 
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.util.ArrayList;
-
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Solution {
 
+    public Set<String> findMaxLengthPalindromeFromString(String text){
 
-    public void solution1(int[] array, int k){
+        String builder = new StringBuilder(text).reverse().toString();
 
-        if(k > array.length) return;
+        PalindromesObject[][] matrix = new PalindromesObject[text.length()+1][text.length()+1];
 
-        int[] tmpArray = new int[k];
-
-        //tmpArray
-        System.arraycopy(array, array.length-k-1, tmpArray, 0, k);
-
-        System.arraycopy(array, 0, array, array.length-k-1, array.length-k);
-
-        System.arraycopy(tmpArray, 0, array, 0, k);
-
-        // space O(k);    time O(3n)
-    }
-
-    public int[] solution2(int[] array, int k){
-
-        int[] newArray = new int[array.length];
-
-        int counter = 0;
-        int index = array.length-k;
-
-        while (counter < array.length){
-
-            if (index == array.length){
-                index = 0;
+        for (PalindromesObject[] list : matrix){
+            for (int i = 0; i <= text.length(); i++){
+                list[i] = new PalindromesObject();
             }
-            newArray[counter++] = array[index++];
         }
-        return newArray;
-       // array = newArray;
-        // time O(n) space O(n)
+
+        for (int i = 1; i <= text.length(); i++){
+
+            for (int j = 1; j <= text.length(); j++){
+
+                if (builder.charAt(i-1) == text.charAt(j-1)){
+                    PalindromesObject object = matrix[i-1][j-1];
+                    String suffix = String.valueOf(text.charAt(j - 1));
+                    if (object.palindromeList.isEmpty()){
+                        matrix[i][j].palindromeList.add(suffix);
+                    }else {
+                        for (String str : object.palindromeList){
+                            matrix[i][j].palindromeList.add(str+suffix);
+                        }
+                    }
+                    matrix[i][j].length = object.length + 1;
+                }else {
+                    if (matrix[i-1][j].length > matrix[i][j-1].length){
+                        matrix[i][j].palindromeList.addAll(matrix[i-1][j].palindromeList);
+                        matrix[i][j].length = matrix[i-1][j].length;
+                    }
+                    else if (matrix[i-1][j].length < matrix[i][j-1].length){
+                        matrix[i][j].palindromeList.addAll(matrix[i][j-1].palindromeList);
+                        matrix[i][j].length = matrix[i][j-1].length;
+                    }
+                    else {
+                        matrix[i][j].palindromeList.addAll(matrix[i-1][j].palindromeList);
+                        matrix[i][j].palindromeList.addAll(matrix[i][j-1].palindromeList);
+                        matrix[i][j].length = matrix[i-1][j].length;
+                    }
+                }
+            }
+        }
+
+        return matrix[text.length()][text.length()].palindromeList;
     }
 
-    public int[] solution3(int[] array, int k){
+    class PalindromesObject{
 
-        List<Integer> tmp = new ArrayList<>(k);
+        int length = 0;
+        Set<String> palindromeList;
 
-        for (int i = k-1; i < array.length; i++){
-            tmp.add(array[i]);
+        public PalindromesObject() {
+            this.palindromeList = new HashSet<>();
         }
-
-        System.arraycopy(array, 0, array, array.length-k-1, array.length-k);
-
-        for (int i = 0; i < array.length-k; i++){
-            array[i] = tmp.get(i);
-        }
-
-        return array;
-
-        // time O(n)+O(n)  = O(2n)  space O(n)
     }
+
 
     @Test
     public void test(){
 
-        int[] result = solution2(new int[]{1,2,3,4,5,6,7}, 3);
+        Set<String> result = findMaxLengthPalindromeFromString("bbbcdab");
 
-        Assert.assertEquals(result.length, 8);
+        for (String str : result){
+
+            System.out.println(str);
+        }
+
     }
 
 }

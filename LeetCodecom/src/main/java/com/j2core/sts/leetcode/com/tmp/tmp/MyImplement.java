@@ -1,4 +1,4 @@
-package com.j2core.sts.leetcode.com.tmp;
+package com.j2core.sts.leetcode.com.tmp.tmp;
 
 import java.util.Date;
 import java.util.HashMap;
