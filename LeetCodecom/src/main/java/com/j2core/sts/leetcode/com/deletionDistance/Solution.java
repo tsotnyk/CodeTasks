@@ -32,10 +32,9 @@ public class Solution {
     public int deletionDistance(String string1, String string2){
 
         int maxLength = string1.length() + string2.length();
+        int maxGeneralLength = 0;
 
         removeUniqSymbols(string1, string2);
-
-        int maxGeneralLength = 0;
 
         for (int i = 0; i < string1.length(); i++){
             int counter = 0;
@@ -88,5 +87,11 @@ public class Solution {
         Assert.assertEquals(6, deletionDistance("thought", "sloughs"));
         Assert.assertEquals(9, deletionDistance("scapegoat", "basket"));
         Assert.assertEquals(7, deletionDistance("bgoatx", "akagoasta"));
+
+        Assert.assertEquals(deletionDistanceRecursion("abcd", "abc"), 1);
+        Assert.assertEquals(deletionDistanceRecursion("bbbcdab", "badcbbb"), 6);
+        Assert.assertEquals(6, deletionDistanceRecursion("thought", "sloughs"));
+        Assert.assertEquals(9, deletionDistanceRecursion("scapegoat", "basket"));
+        Assert.assertEquals(7, deletionDistanceRecursion("bgoatx", "akagoasta"));
     }
 }
