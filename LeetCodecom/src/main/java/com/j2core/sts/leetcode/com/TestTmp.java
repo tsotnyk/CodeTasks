@@ -3,8 +3,21 @@ package com.j2core.sts.leetcode.com;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class TestTmp {
 
+    @Test
+    public void tmp(){
+
+        ArrayList<Character> word = new ArrayList<>(Arrays.asList('a','b','a','b','c','a','c'));
+
+        word.add(0, 'c');
+        word.remove(5);
+
+        System.out.println(word.size());
+    }
 
 
     @Test
