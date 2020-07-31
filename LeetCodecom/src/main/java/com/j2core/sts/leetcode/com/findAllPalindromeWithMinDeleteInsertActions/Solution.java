@@ -14,22 +14,26 @@ public class Solution {
 
         List<String> palindromeList = new LinkedList<>();
 
+        //if input word is null return empty list
         if (word == null) return palindromeList;
-        if (word.length() < 1){
-            return createFullList();
-        }
-        if (word.length() == 1 || isPalindrome(word)){
+
+        // empty string is palindrome, if word's length == 0 - this word is palindrome
+        // return list with input word
+        if (word.length() <= 1 || isPalindrome(word)){
             palindromeList.add(word);
             return palindromeList;
         }
 
+        // calculate min actions for create palindrome from input word
         int minActionDistance = findMinActionDistance(word);
         List<String> potentialPalindromes = new LinkedList<>(Collections.singletonList(word));
 
+        // try to create palindromes from input word
         while (minActionDistance-- > 0){
             potentialPalindromes = doDeleteInsertActions(potentialPalindromes);
         }
 
+        // get palindromes from permutations word
         createPalindromeList(potentialPalindromes, palindromeList);
 
         return palindromeList;
@@ -38,6 +42,7 @@ public class Solution {
 
     private List<String> doDeleteInsertActions(List<String> potentialPalindromes) {
 
+        // create list with one changes for all potential palindrome list
         List<String> nextPotentialPalindromes = new LinkedList<>();
         for (String word : potentialPalindromes){
             int indexStart = 0;
@@ -45,16 +50,20 @@ public class Solution {
 
             while (indexStart < indexEnd){
 
+                // find first not equals symbols
                 if (word.charAt(indexStart) != word.charAt(indexEnd)){
 
+                    //remove symbol from indexStart
                     nextPotentialPalindromes.add(word.substring(0, indexStart) + word.substring(indexStart + 1));
+                    //remove symbol from indexEnd
                     nextPotentialPalindromes.add(word.substring(0, indexEnd)+ word.substring(indexEnd+1));
-
+                    //insert end index symbol to index start position
                     if (indexStart == 0){
                         nextPotentialPalindromes.add(word.charAt(indexEnd) + word.substring(indexStart));
                     }else {
                         nextPotentialPalindromes.add(word.substring(0, indexStart) + word.charAt(indexEnd) + word.substring(indexStart));
                     }
+                    //insert start index symbol to index end position
                     nextPotentialPalindromes.add(word.substring(0, indexEnd+1) + word.charAt(indexStart) + word.substring(indexEnd+1));
                     break;
                 }
@@ -68,6 +77,7 @@ public class Solution {
 
     private void createPalindromeList(List<String> potentialPalindromes, List<String> palindromeList) {
 
+        // get all unique palindromes from word's permutations
         HashSet<String> setWords = new HashSet<>();
         for (String word : potentialPalindromes){
             if (isPalindrome(word)){
@@ -78,9 +88,9 @@ public class Solution {
         palindromeList.addAll(setWords);
     }
 
-
     private int findMinActionDistance(String word) {
 
+        // calculate min actions for create palindrome from input word
         String reverseWord = new StringBuilder(word).reverse().toString();
 
         int[][] matrix = new int[word.length()+1][word.length()+1];
@@ -107,6 +117,7 @@ public class Solution {
         int indexStart = 0;
         int indexEnd = word.length()-1;
 
+        // this word is palindrome or not
         while (indexStart < indexEnd){
 
             if (word.charAt(indexStart) != word.charAt(indexEnd)) return false;
@@ -115,16 +126,6 @@ public class Solution {
         }
 
         return true;
-    }
-
-    private List<String> createFullList() {
-
-        List<String> characterList = new LinkedList<>();
-        for(char alphabet = 'a'; alphabet <='z'; alphabet ++ ){
-            characterList.add(String.valueOf(alphabet));
-        }
-
-        return characterList;
     }
 
     @Test
@@ -161,11 +162,11 @@ public class Solution {
 
         List<String> result5 = findAllPalindromeWithDeleteInsertActions("");
 
-        Assert.assertEquals(result5.size(), 26);
+        Assert.assertEquals(result5.size(), 1);
         for (String palindrome : result5){
             System.out.println(palindrome);
         }
-        System.out.println( "  == >  from a to z");
+        System.out.println( "  == > only empty string");
 
         List<String> result6 = findAllPalindromeWithDeleteInsertActions("a");
 
