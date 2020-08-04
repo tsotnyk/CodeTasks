@@ -5,9 +5,6 @@ import org.junit.Test;
 
 public class Solution2_6 {
 
-<<<<<<< HEAD
-
-=======
     public boolean isPalindrome(ListNode root){
 
         if (root == null) return false;
@@ -74,5 +71,4 @@ public class Solution2_6 {
         root5.next.next = new ListNode(2);
         Assert.assertFalse(isPalindrome(root5));
     }
->>>>>>> a2e1eb21fd4967740f71e6cd09a288a7158af532
 }
