@@ -1,4 +1,4 @@
-package facebook.codingPractice.linkedList.reverseOperations;
+package sts.facebook.codingPractice.linkedList.reverseOperations;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;

@@ -1,4 +1,4 @@
-package facebook.codingPractice.stack.balanceBrackets;
+package sts.facebook.codingPractice.stack.balanceBrackets;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;

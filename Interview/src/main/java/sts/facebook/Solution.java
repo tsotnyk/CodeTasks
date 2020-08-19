@@ -1,4 +1,4 @@
-package facebook;
+package sts.facebook;
 
 public class Solution {
 }

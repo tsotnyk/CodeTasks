@@ -1,4 +1,4 @@
-package facebook.codingPractice.queue.queueRemovals;
+package sts.facebook.codingPractice.queue.queueRemovals;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;

@@ -1,4 +1,4 @@
-package interviewForApple.numbersFromString;
+package sts.numbersFromString;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;

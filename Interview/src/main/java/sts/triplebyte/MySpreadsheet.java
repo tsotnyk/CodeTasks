@@ -1,4 +1,4 @@
-package triplebyte;
+package sts.triplebyte;
 
  class Solution {
     

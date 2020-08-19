@@ -1,4 +1,4 @@
-package sts.facebook.codingPractice.slowSums;
+package sts.facebook.codingPractice.greedy.slowSums;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;

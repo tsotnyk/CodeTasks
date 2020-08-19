@@ -1,4 +1,4 @@
-package facebook.codingPractice.linkedList.reverseOperations;
+package sts.facebook.codingPractice.linkedList.reverseOperations;
 
 public class Node {
 

@@ -1,4 +1,4 @@
-package airbnb;
+package sts.airbnb;
 
 public class GoogleSolution {
 }

@@ -1,4 +1,4 @@
-package facebook.codingPractice.hashTable.pairSum;
+package sts.facebook.codingPractice.hashTable.pairSum;
 
 
 import org.testng.Assert;

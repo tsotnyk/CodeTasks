@@ -1,4 +1,4 @@
-package facebook.codingPractice.heaps.magicalCandyBags;
+package sts.facebook.codingPractice.heaps.magicalCandyBags;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;

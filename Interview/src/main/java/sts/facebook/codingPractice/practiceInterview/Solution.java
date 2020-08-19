@@ -1,4 +1,4 @@
-package facebook.codingPractice.practiceInterview;
+package sts.facebook.codingPractice.practiceInterview;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;

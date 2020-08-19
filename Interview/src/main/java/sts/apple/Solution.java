@@ -1,4 +1,4 @@
-package apple;
+package sts.apple;
 
 public class Solution {
 

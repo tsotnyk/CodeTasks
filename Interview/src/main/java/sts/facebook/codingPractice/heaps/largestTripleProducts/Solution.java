@@ -1,4 +1,4 @@
-package facebook.codingPractice.heaps.largestTripleProducts;
+package sts.facebook.codingPractice.heaps.largestTripleProducts;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;

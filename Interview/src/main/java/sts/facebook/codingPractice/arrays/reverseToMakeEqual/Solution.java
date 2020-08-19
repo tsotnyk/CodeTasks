@@ -1,4 +1,4 @@
-package sts.facebook.codingPractice.reverseToMakeEqual;
+package sts.facebook.codingPractice.arrays.reverseToMakeEqual;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;

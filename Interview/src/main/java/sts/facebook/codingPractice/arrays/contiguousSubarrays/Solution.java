@@ -1,4 +1,4 @@
-package sts.facebook.codingPractice.contiguousSubarrays;
+package sts.facebook.codingPractice.arrays.contiguousSubarrays;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;

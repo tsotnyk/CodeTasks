@@ -1,4 +1,4 @@
-package facebook.codingPractice.string.rotationalCipher;
+package sts.facebook.codingPractice.string.rotationalCipher;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;

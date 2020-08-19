@@ -1,4 +1,4 @@
-package facebook.interview;
+package sts.facebook.interview;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
