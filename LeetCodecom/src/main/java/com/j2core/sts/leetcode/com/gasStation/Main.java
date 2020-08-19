@@ -1,2 +1,6 @@
-package com.j2core.sts.leetcode.com.gasStation;public class Main {
+package com.j2core.sts.leetcode.com.gasStation;
+
+public class Main {
+
+
 }

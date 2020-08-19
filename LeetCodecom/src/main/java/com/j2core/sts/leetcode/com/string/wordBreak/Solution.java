@@ -28,7 +28,7 @@ public class Solution {
         Assert.assertTrue(wordBreak("aaaaaaa", new LinkedList<String>(Arrays.asList("aaaa", "aaa"))));
 
         Assert.assertTrue(wordBreak("leetcode", new LinkedList<String>(Arrays.asList("leet", "code"))));
-        Assert.assertTrue(wordBreak("applepenapple", new LinkedList<String>(Arrays.asList("apple", "pen"))));
+        Assert.assertTrue(wordBreak("applepenapple", new LinkedList<String>(Arrays.asList("sts.apple", "pen"))));
 
     }
 
