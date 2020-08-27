@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 
 public class Solution {
 
-    public boolean validPalindrome(String s) {
+    public boolean validPalindromeOld(String s) {
 
         if (s == null || s.length() < 2) return true;
         return validPalindrome(s, 0, s.length()-1, false);
@@ -22,6 +22,33 @@ public class Solution {
                 if (deleteAction) return false;
                 if (validPalindrome(string, indexStart, indexEnd-1, true)) return true;
                 return validPalindrome(string, indexStart+1, indexEnd, true);
+            }
+        }
+
+        return true;
+    }
+
+    public boolean validPalindrome(String s) {
+
+        if (s == null || s.length() < 2) return true;
+        int delta = 0;
+        int indexI = 0;
+        int indexJ = s.length()-1;
+
+        while (indexI < indexJ){
+            if (delta == 0){
+                if (s.charAt(indexI) != s.charAt(indexJ)){
+                    delta++;
+                }else {
+                    indexI++;
+                    indexJ--;
+                }
+            }else {
+                if (indexI != indexJ-delta && indexJ != indexI+delta){
+                    if (s.charAt(indexI) != s.charAt(indexJ-1) && s.charAt(indexI+1) != s.charAt(indexJ)) return false;
+                }
+                indexI++;
+                indexJ--;
             }
         }
 
