@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 public class Solution {
 
 
-    public int maxProfit(int[] prices) {
+    public int maxProfitOld(int[] prices) {
 
         if (prices.length < 2) return 0;
 
@@ -49,9 +49,39 @@ public class Solution {
 
     }
 
+    public int maxProfit(int[] prices) {
+
+        if (prices == null || prices.length < 2) return 0;
+        int profit = 0;
+        int minPrice = prices[0];
+        int maxPrice = prices[0];
+
+        for (int i = 1; i < prices.length; i++){
+
+            if (minPrice > prices[i]){
+                minPrice = prices[i];
+                maxPrice = prices[i];
+            }else{
+                if (maxPrice < prices[i]){
+                    maxPrice = prices[i];
+                    int tmpProfit = maxPrice-minPrice;
+                    if (profit < tmpProfit){
+                        profit = tmpProfit;
+                    }
+                }
+            }
+        }
+        return profit;
+    }
+
 
     @Test
     public void test(){
+
+
+        int resultn = maxProfit(new int[]{2,1,2,1,0,1,2});
+
+        Assert.assertEquals(resultn, 2);
 
         int result = maxProfit(new int[]{7,1,5,3,6,4});
 
