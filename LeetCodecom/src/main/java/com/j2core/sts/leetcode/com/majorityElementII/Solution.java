@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Solution {
 
-    public List<Integer> majorityElement(int[] nums) {
+    public List<Integer> majorityElementOld(int[] nums) {
 
         List<Integer> result = new LinkedList<>();
         if (nums == null) return null;
@@ -48,11 +48,36 @@ public class Solution {
 
     }
 
+    public List<Integer> majorityElement(int[] nums) {
 
+        List<Integer> result = new LinkedList<>();
+        if (nums.length < 1) return result;
+        Arrays.sort(nums);
+        int count = nums.length/3;
+        int counter = 1;
+        int index = 1;
+        int num = nums[0];
+        while (index < nums.length){
+            if (nums[index] != num){
+                if (counter > count){
+                    result.add(num);
+                }
+                counter = 0;
+                num = nums[index];
+            }
+            counter++;
+            index++;
+        }
+        if (counter > count){
+            result.add(num);
+        }
+
+        return result;
+    }
     @Test
     public void test(){
 
-        majorityElement(new int[]{2,2});
+        majorityElement(new int[]{3,3,2});
 
     }
 }
