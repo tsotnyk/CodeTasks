@@ -47,14 +47,14 @@ public class MergeSortImpl {
     @Test
     public void test(){
 
-//        Assert.assertEquals(mergeSort(null), null);
-//        Assert.assertEquals(mergeSort(new int[]{}), new int[]{});
-//        Assert.assertEquals(mergeSort(new int[]{1}), new int[]{1});
-//        Assert.assertEquals(mergeSort(new int[]{2,1}), new int[]{1,2});
+        Assert.assertEquals(mergeSort(null), null);
+        Assert.assertEquals(mergeSort(new int[]{}), new int[]{});
+        Assert.assertEquals(mergeSort(new int[]{1}), new int[]{1});
+        Assert.assertEquals(mergeSort(new int[]{2,1}), new int[]{1,2});
         Assert.assertEquals(mergeSort(new int[]{2,3,1}), new int[]{1,2,3});
-//        Assert.assertEquals(mergeSort(new int[]{2,4,3,1}), new int[]{1,2,3,4});
-//        Assert.assertEquals(mergeSort(new int[]{2,4,3,1,5}), new int[]{1,2,3,4,5});
-//        Assert.assertEquals(mergeSort(new int[]{2,4,3,1,3,6,4,7,8,9,4,2,4,5,2,0,5}), new int[]{0,1,2,2,2,3,3,4,4,4,4,5,5,6,7,8,9});
+        Assert.assertEquals(mergeSort(new int[]{2,4,3,1}), new int[]{1,2,3,4});
+        Assert.assertEquals(mergeSort(new int[]{2,4,3,1,5}), new int[]{1,2,3,4,5});
+        Assert.assertEquals(mergeSort(new int[]{2,4,3,1,3,6,4,7,8,9,4,2,4,5,2,0,5}), new int[]{0,1,2,2,2,3,3,4,4,4,4,5,5,6,7,8,9});
 
 
     }
