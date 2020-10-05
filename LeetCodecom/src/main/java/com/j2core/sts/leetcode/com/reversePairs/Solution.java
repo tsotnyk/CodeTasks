@@ -55,6 +55,8 @@ public class Solution {
 
     public int reversePairs(int[] nums) {
 
+
+        return 0;
     }
 
     @Test
