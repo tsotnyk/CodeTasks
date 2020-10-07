@@ -123,6 +123,10 @@ public class Solution {
         root2.right = new TreeNode(3);
 
         Assert.assertEquals(getAllElements(root1, root2), new LinkedList<>(Arrays.asList(0,1,1,2,3,4)));
+
+        HashMap<Integer, Integer> map = new HashMap<>();
+
+        for (Map.Entry<Integer, Integer> entry : map.entrySet());
     }
 
 }
