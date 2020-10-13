@@ -1,4 +1,4 @@
-package airbnb;
+package sts.airbnb;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
