@@ -1,10 +1,11 @@
 package com.j2core.sts.leetcode.com.containsDuplicate;
 
 import java.util.Arrays;
+import java.util.HashSet;
 
 public class Solution {
 
-    public boolean containsDuplicate(int[] nums) {
+    public boolean containsDuplicateOld(int[] nums) {
 
         Arrays.sort(nums);
 
@@ -22,4 +23,35 @@ public class Solution {
         return false;
     }
 
+    public boolean containsDuplicateSet(int[] nums) {
+
+        HashSet<Integer> set = new HashSet<>();
+
+        for (int num : nums){
+            if (set.contains(num)){
+                return true;
+            } else {
+                set.add(num);
+            }
+        }
+        return false;
+    }
+
+    public boolean containsDuplicateSort(int[] nums) {
+
+        if (nums == null || nums.length < 1) return false;
+        Arrays.sort(nums);
+        int index = 1;
+        int num = nums[0];
+
+        while (index < nums.length){
+            if (nums[index] == num){
+                return true;
+            }else {
+                num = nums[index++];
+            }
+        }
+
+        return false;
+    }
 }
