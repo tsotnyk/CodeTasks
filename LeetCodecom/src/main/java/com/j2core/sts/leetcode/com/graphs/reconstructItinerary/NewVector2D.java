@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 
 import java.util.*;
 
-public class NewSolution {
+public class NewVector2D {
 
     public List<String> findItinerary(List<List<String>> tickets) {
 

@@ -11,71 +11,71 @@ import java.util.List;
 
 public class Solution {
 
-    public List<List<Integer>> palindromePairsOld(String[] words) {
-
-        List<List<Integer>> result = new LinkedList<>();
-
-        for (int i = 0; i < words.length-1; i++){
-
-            for (int j = i+1; j < words.length; j++){
-
-                if (j != i){
-                    if (isPalindromeOld(words[i], words[j])){
-                        List<Integer> pair = new LinkedList<>();
-                        pair.add(i);
-                        pair.add(j);
-
-                        result.add(pair);
-                    }
-
-                    if (isPalindromeOld(words[j], words[i])){
-                        List<Integer> pair = new LinkedList<>();
-                        pair.add(j);
-                        pair.add(i);
-
-                        result.add(pair);
-                    }
-                }
-            }
-        }
-        return result;
-    }
-
-    private boolean isPalindromeOld(String word1, String word2){
-
-        String string = word1+word2;
-
-        int indexS = 0;
-        int indexE = string.length()-1;
-
-        while (indexS < indexE){
-            if (string.charAt(indexS++) != string.charAt(indexE--)){
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    public List<List<Integer>> palindromePairs1(String[] words) {
-
-        List<List<Integer>> palindromePair = new LinkedList<>();
-
-        for (int i = 0; i < words.length-1; i++){
-            for (int j = i+1; j < words.length; j++){
-                if (i != j){
-                    if(isPairWordPalindrome(words[i], words[j])){
-                        palindromePair.add(new LinkedList<>(Arrays.asList(i, j)));
-                    }
-                    if (isPairWordPalindrome(words[j], words[i])){
-                        palindromePair.add(new LinkedList<>(Arrays.asList(j, i)));
-                    }
-                }
-            }
-        }
-
-        return palindromePair;
-    }
+//    public List<List<Integer>> palindromePairsOld(String[] words) {
+//
+//        List<List<Integer>> result = new LinkedList<>();
+//
+//        for (int i = 0; i < words.length-1; i++){
+//
+//            for (int j = i+1; j < words.length; j++){
+//
+//                if (j != i){
+//                    if (isPalindromeOld(words[i], words[j])){
+//                        List<Integer> pair = new LinkedList<>();
+//                        pair.add(i);
+//                        pair.add(j);
+//
+//                        result.add(pair);
+//                    }
+//
+//                    if (isPalindromeOld(words[j], words[i])){
+//                        List<Integer> pair = new LinkedList<>();
+//                        pair.add(j);
+//                        pair.add(i);
+//
+//                        result.add(pair);
+//                    }
+//                }
+//            }
+//        }
+//        return result;
+//    }
+//
+//    private boolean isPalindromeOld(String word1, String word2){
+//
+//        String string = word1+word2;
+//
+//        int indexS = 0;
+//        int indexE = string.length()-1;
+//
+//        while (indexS < indexE){
+//            if (string.charAt(indexS++) != string.charAt(indexE--)){
+//                return false;
+//            }
+//        }
+//
+//        return true;
+//    }
+//
+//    public List<List<Integer>> palindromePairs1(String[] words) {
+//
+//        List<List<Integer>> palindromePair = new LinkedList<>();
+//
+//        for (int i = 0; i < words.length-1; i++){
+//            for (int j = i+1; j < words.length; j++){
+//                if (i != j){
+//                    if(isPairWordPalindrome(words[i], words[j])){
+//                        palindromePair.add(new LinkedList<>(Arrays.asList(i, j)));
+//                    }
+//                    if (isPairWordPalindrome(words[j], words[i])){
+//                        palindromePair.add(new LinkedList<>(Arrays.asList(j, i)));
+//                    }
+//                }
+//            }
+//        }
+//
+//        return palindromePair;
+//    }
 
     private boolean isPairWordPalindrome(String word1, String word2){
 
@@ -116,29 +116,40 @@ public class Solution {
 
         if (words == null || words.length < 2) return pairList;
 
-        HashMap<String, Integer> wordReverseMap = new HashMap<>();
+        HashMap<Character, List<WordIndex>> postfixMap = new HashMap<>();
+        HashMap<Character, List<WordIndex>> prefixMap = new HashMap<>();
 
         for (int i = 0; i < words.length; i++){
-            wordReverseMap.put(new StringBuilder(words[i]).reverse().toString(), i);
+            String word = words[i];
+            char lastLetter = word.charAt(words.length-1);
+            List<WordIndex> postfixList = postfixMap.getOrDefault(postfixMap.get(lastLetter), new LinkedList<>());
+            postfixList.add(new WordIndex(word, i));
+            postfixMap.put(lastLetter, postfixList);
+            char firstLetter = word.charAt(0);
+            List<WordIndex> prefixList = postfixMap.getOrDefault(postfixMap.get(firstLetter), new LinkedList<>());
+            prefixList.add(new WordIndex(word, i));
+            prefixMap.put(firstLetter, prefixList);
         }
 
         for (int i = 0; i < words.length; i++){
-
             String word = words[i];
-            int index = 1;
+            char first = word.charAt(0);
+            char last = word.charAt(word.length()-1);
+            List<WordIndex> postFix = postfixMap.get(last);
 
-            while (index <= word.length()){
-                if (wordReverseMap.containsKey(word.substring(0, index))){
-                    int subWordIndex = wordReverseMap.get(word.substring(0, index));
-                    if (subWordIndex != i && isPairWordPalindrome(word, new StringBuilder(word.substring(0, index)).reverse().toString())){
-                        pairList.add(new LinkedList<>(Arrays.asList(subWordIndex, i)));
-                    }
-                }
-                index++;
-            }
         }
 
         return pairList;
+    }
+
+    class WordIndex{
+        int index;
+        String word;
+
+        public WordIndex(String word, int index){
+            this.word = word;
+            this.index = index;
+        }
     }
 
     @Test
