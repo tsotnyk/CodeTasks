@@ -1,7 +1,6 @@
 package com.j2core.sts.leetcode.com.lRUCache;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 public class LRUCacheNew<K, V> extends LinkedHashMap<K, V> {
     private int size;
