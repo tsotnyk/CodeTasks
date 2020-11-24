@@ -1,4 +1,4 @@
-package com.j2core.sts.leetcode.com.string.readNCharactersGivenRead4IICallMultipleTimes;
+package com.j2core.sts.leetcode.com.string.readNCharactersGiverRead4;
 
 public class Reader4 {
 

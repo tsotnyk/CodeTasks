@@ -33,7 +33,7 @@ public class Solution {
 
     public int[][] matrixBlockSum(int[][] mat, int K) {
 
-
+        return null;
     }
 
     @Test
