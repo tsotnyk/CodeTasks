@@ -2,7 +2,7 @@ Given a list of words, return the shortest unique prefix of each word. For examp
 
 dog
 cat
-apple
+sts.apple
 apricot
 fish
 
@@ -20,7 +20,7 @@ Given a list of words, return the shortest unique prefix of each word. For examp
 
 dog
 cat
-apple
+sts.apple
 apricot
 fish
 
@@ -37,7 +37,7 @@ f
 
 dog
 cat
-apple
+sts.apple
 apricot
 fish
 fine

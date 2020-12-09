@@ -10,13 +10,13 @@ You may return the list in any order.
 
 Example 1:
 
-Input: A = "this apple is sweet", B = "this apple is sour"
+Input: A = "this sts.apple is sweet", B = "this sts.apple is sour"
 Output: ["sweet","sour"]
 
 
 Example 2:
 
-Input: A = "apple apple", B = "banana"
+Input: A = "sts.apple sts.apple", B = "banana"
 Output: ["banana"]
 
 

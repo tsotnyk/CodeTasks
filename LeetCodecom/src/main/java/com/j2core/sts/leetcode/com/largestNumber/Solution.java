@@ -1,10 +1,13 @@
 package com.j2core.sts.leetcode.com.largestNumber;
 
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
 import java.util.*;
 
 public class Solution {
 
-    public String largestNumber(int[] nums) {
+    public String largestNumberOld(int[] nums) {
 
         Map<Integer, List<String>> numMap = createMap(nums);
         StringBuilder builder = new StringBuilder();
@@ -102,5 +105,71 @@ public class Solution {
             }
             return 0;
         }
+    }
+
+    public String largestNumber(int[] nums) {
+
+        List<String> numList = new LinkedList<>();
+        for (int num : nums){
+            numList.add(String.valueOf(num));
+        }
+
+        Collections.sort(numList, new Comparator<String>() {
+            @Override
+            public int compare(String s1, String s2) {
+
+                int index1 = 0;
+                int index2 = 0;
+
+                if (s1.charAt(index1) == s2.charAt(index2)){
+
+                    while (index1 < s1.length() && index2 < s2.length()){
+                        index1++;
+                        index2++;
+                        if (index1 == s1.length()){
+                            if (index2 == s2.length()) break;
+                            index1 = 0;
+                        }
+                        if (index2 == s2.length()){
+                            index2 = 0;
+                        }
+                        if (s1.charAt(index1) == s2.charAt(index2)){
+                            continue;
+                        }else {
+                            return s2.charAt(index2) - s1.charAt(index1);
+                        }
+                    }
+
+                    if (index1 == s1.length()){
+                        index1--;
+                    }
+                    if (index2 == s2.length()){
+                        index2--;
+                    }
+                }
+                return s2.charAt(index2) - s1.charAt(index1);
+            }
+        });
+
+        if (numList.get(0).equals("0")) return "0";
+
+        StringBuilder builder = new StringBuilder();
+
+        for (String num : numList){
+            builder.append(num);
+        }
+        return builder.toString();
+    }
+
+    @Test
+    public void test(){
+
+        Assert.assertEquals(largestNumber(new int[]{3544,3013,3061,468}), "468354430613013");
+        Assert.assertEquals(largestNumber(new int[]{824,938,1399,5607,6973,5703,9609,4398,8247}), "9609938824824769735703560743981399");
+
+        Assert.assertEquals(largestNumber(new int[]{3,30,34,5,9}), "9534330");
+        Assert.assertEquals(largestNumber(new int[]{10,2}), "210");
+        Assert.assertEquals(largestNumber(new int[]{1,1,1}), "111");
+
     }
 }

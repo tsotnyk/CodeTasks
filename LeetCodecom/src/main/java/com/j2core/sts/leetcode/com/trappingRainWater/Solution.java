@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 
 public class Solution {
 
-    public int trap(int[] height) {
+    public int trapOld(int[] height) {
 
         int indexEnd = height.length-1;
         int indexStart = indexEnd-1;
@@ -33,6 +33,11 @@ public class Solution {
         }
 
         return sum;
+    }
+
+    public int trap(int[] height) {
+
+return 0;
     }
 
     @Test

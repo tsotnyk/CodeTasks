@@ -1,6 +1,10 @@
 package com.j2core.sts.leetcode.com.arrays.maximumWidthRamp;
 
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
 import java.util.Arrays;
+import java.util.Stack;
 
 public class Solution {
 
@@ -72,5 +76,26 @@ public class Solution {
         }
 
         return ans;
+    }
+
+    public int maxWidthRampStack(int[] A) {
+        int max=0;
+        Stack<Integer> stack = new Stack<>();
+        for(int i = 0; i < A.length; i++) {
+            if (stack.isEmpty() || A[i] < A[stack.peek()])
+                stack.push(i);
+        }
+        for(int i = A.length-1; i > -1; i--) {
+            while (!stack.isEmpty() && A[i] >= A[stack.peek()]) {
+                max = Math.max(max, i - stack.pop());
+            }
+        }
+        return max;
+    }
+
+    @Test
+    public void test(){
+
+        Assert.assertEquals(maxWidthRampStack(new int[]{9,8,1,0,1,9,4,0,4,1}), 7);
     }
 }

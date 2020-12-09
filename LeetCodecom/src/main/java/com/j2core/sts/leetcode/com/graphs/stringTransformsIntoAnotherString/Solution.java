@@ -64,12 +64,32 @@ public class Solution {
         return usedLetter.size() != 26;
     }
 
+    public boolean canConvert1(String str1, String str2) {
+
+        Map<Character, Character> map = new HashMap<>();
+
+        for (int i = 0; i < str1.length(); i++){
+            char first = str1.charAt(i);
+            char second = str2.charAt(i);
+            if (map.containsKey(first)){
+                if (second != map.get(first)) return false;
+            }else {
+                map.put(first, second);
+            }
+        }
+
+        return map.size() != 26;
+    }
+
     @Test
     public void test(){
 
         Assert.assertTrue(canConvert("aabcc", "ccdee"));
         Assert.assertFalse(canConvert("leetcode", "codeleet"));
+
         Assert.assertFalse(canConvert("abcdefghijklmnopqrstuvwxyz","bcdefghijklmnopqrstuvwxyza"));
+        Assert.assertTrue(canConvert("abcdefghijklmnopqrstuvwxyz","bcdefghijklmnopqrstuvwxyzq"));
+
         Assert.assertTrue(canConvert("abcdefghijklmnopqrstuvwxy","bcdefghijkamnopqrstuvwxyz"));
 
     }

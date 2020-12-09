@@ -37,7 +37,22 @@ public class Solution {
 
     public String minWindow(String S, String T) {
 
+        String minSubString = "";
+
+        int index = S.lastIndexOf(T.charAt(0));
+
+        while (index > -1){
+            String subString = findSubString(S, T, index);
+            if (subString.length() > 0){
+
+            }
+        }
         return "";
+    }
+
+    private String findSubString(String s, String t, int index) {
+
+        return null;
     }
 
     @Test

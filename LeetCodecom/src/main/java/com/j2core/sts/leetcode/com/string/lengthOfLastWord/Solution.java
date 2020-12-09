@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 public class Solution {
 
 
-    public int lengthOfLastWord(String s) {
+    public int lengthOfLastWordOld(String s) {
         int freeSpace = 0;
         int lastIndex = s.length()-1;
 
@@ -24,6 +24,23 @@ public class Solution {
 
     }
 
+    public int lengthOfLastWord(String s) {
+
+        int countChar = 0;
+        int index = s.length()-1;
+
+        while (index > -1){
+            if (Character.isLetter(s.charAt(index))){
+                while (index > -1 && Character.isLetter(s.charAt(index--))){
+                    countChar++;
+                }
+                break;
+            }
+            index--;
+        }
+
+        return countChar;
+    }
 
 
     @Test

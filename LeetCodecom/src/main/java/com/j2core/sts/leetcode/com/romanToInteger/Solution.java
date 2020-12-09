@@ -60,4 +60,74 @@ public class Solution {
         }
         return result;
     }
+
+    public int romanToIntNew(String number) throws Exception{
+
+        if(number == null || number.length() < 1) throw new Exception("Uncorrect date");
+
+        long result = 0;
+
+        for(int i = number.length()-1; i > -1;){
+
+            int tmpNum = 0;
+            switch(number.charAt(i)){
+                case 'I':
+                    tmpNum = 1;
+                    break;
+                case 'V':
+                    if(i-1 > -1 && number.charAt(i-1) == 'I'){
+                        tmpNum = 4;
+                        i--;
+                    }else{
+                        tmpNum = 5;
+                    }
+                    break;
+                case 'X':
+                    if(i-1 > -1 && number.charAt(i-1) == 'I'){
+                        tmpNum = 9;
+                        i--;
+                    }else{
+                        tmpNum = 10;
+                    }
+                    break;
+                case 'L':
+                    if(i-1 > -1 && number.charAt(i-1) == 'X'){
+                        tmpNum = 40;
+                        i--;
+                    }else{
+                        tmpNum = 50;
+                    }
+                    break;
+                case 'C':
+                    if(i-1 > -1 && number.charAt(i-1) == 'X'){
+                        tmpNum = 90;
+                        i--;
+                    }else{
+                        tmpNum = 100;
+                    }
+                    break;
+                case 'D':
+                    if(i-1 > -1 && number.charAt(i-1) == 'C'){
+                        tmpNum = 400;
+                        i--;
+                    }else{
+                        tmpNum = 500;
+                    }
+                    break;
+                case 'M':
+                    if(i-1 > -1 && number.charAt(i-1) == 'C'){
+                        tmpNum = 900;
+                        i--;
+                    }else{
+                        tmpNum = 1000;
+                    }
+                    break;
+                default: throw new Exception("Uncorrect date");
+            }
+            result += tmpNum;
+            i--;
+        }
+
+        return (int) result;
+    }
 }

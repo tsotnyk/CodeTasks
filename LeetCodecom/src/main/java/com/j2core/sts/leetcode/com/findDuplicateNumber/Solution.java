@@ -47,11 +47,25 @@ public class Solution {
         return 0;
     }
 
+    public int findDuplicateNew(int[] nums){
+
+        Arrays.sort(nums);
+        int num = nums[0];
+        for (int i = 1; i < nums.length; i++){
+            if (nums[i] == num) {
+                break;
+            }
+            num = nums[i];
+        }
+
+        return num;
+    }
+
 
     @Test
     public void test(){
 
-        int result = findDuplicate(new int[]{1,3,4,2,2});
+        int result = findDuplicateNew(new int[]{1,3,4,2,2});
 
         Assert.assertTrue(result == 2);
     }
