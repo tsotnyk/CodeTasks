@@ -43,6 +43,8 @@ public class Solution {
     @Test
     public void test(){
 
+        System.out.println(longestCommonSubsequence("zxabcdezy", "yzabcdezx"));
+
         int result = longestCommonSubsequence("papmretkborsrurgtina","nsnupotstmnkfcfavaxgl");
         System.out.println(result);
     }
