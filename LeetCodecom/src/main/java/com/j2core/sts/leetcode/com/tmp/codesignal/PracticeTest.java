@@ -32,7 +32,7 @@ public class PracticeTest {
         Assert.assertEquals(mutateTheArray(5, new int[]{4,0,1,-2,3}), new int[]{4,5,-1,2,1});
     }
 
-    int countTinyPairs(int[] a, int[] b, int k) {
+    int countTinyPairsV1(int[] a, int[] b, int k) {
 
         int counter = 0;
         int indexRight = b.length-1;
@@ -128,5 +128,83 @@ public class PracticeTest {
     public void test4(){
 
         Assert.assertEquals(concatenationsSum(new int[]{10,2}), 1344);
+    }
+
+    int countTinyPairs(int[] a, int[] b, int k) {
+
+        int counter = 0;
+        int indexRight = b.length-1;
+        int numLength = String.valueOf(k).length();
+
+        for (int i : a) {
+            String mergeNum = String.valueOf(i) + String.valueOf(b[indexRight]);
+            if (mergeNum.length() < numLength) {
+                counter++;
+            } else if (mergeNum.length() == numLength && Integer.parseInt(mergeNum) < k) {
+                counter++;
+            }
+            indexRight--;
+        }
+        return counter;
+    }
+
+    long digitAnagrams(int[] a) {
+        int counter = 0;
+        HashMap<String, Integer> set = new HashMap<>();
+
+        for (int num : a){
+
+            int[] array = new int[10];
+            while (num > 0){
+                array[num%10] += 1;
+                num /= 10;
+            }
+
+            StringBuilder builder = new StringBuilder();
+            for (int i = 0; i < 10; i++){
+                if (array[i] > 0){
+                    int count = 0;
+                    while (count++ < array[i]){
+                        builder.append(i);
+                    }
+                }
+            }
+            String number = builder.toString();
+            if (set.containsKey(number)){
+                counter += set.get(number);
+                set.put(number, set.get(number)+1);
+            }else {
+                set.put(number, 1);
+            }
+        }
+
+        return  counter;
+    }
+
+//    long digitAnagrams(int[] a) {
+//
+//        int counter = 0;
+//        HashMap<String, Integer> numMap = new HashMap<>();
+//
+//        for(int num : a){
+//
+//            char[] charArray = String.valueOf(num).toCharArray();
+//            Arrays.sort(charArray);
+//            String number = String.valueOf(charArray);
+//            int pair = numMap.getOrDefault(number, 0);
+//            if(pair > 0){
+//                counter += pair;
+//            }
+//            numMap.put(number, pair+1);
+//
+//        }
+//
+//        return counter;
+//    }
+
+    @Test
+    public void test(){
+
+        Assert.assertEquals(digitAnagrams(new int[]{25,35,872,228,53,278,872}), 4);
     }
 }
