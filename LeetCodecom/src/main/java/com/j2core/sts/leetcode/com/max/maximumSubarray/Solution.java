@@ -17,6 +17,7 @@ public class Solution {
         }
         return result;
     }
+
     public int maxSubArrayNew(int[] nums) {
 
         int maxCurrent = nums[0];
@@ -31,5 +32,7 @@ public class Solution {
 
         return maxGlobal;
     }
+
+
 
 }

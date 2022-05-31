@@ -83,9 +83,38 @@ public class Solution {
     @Test
     public void test(){
 
-        Assert.assertEquals(reverse(123), 321);
-        Assert.assertEquals(reverse(-123), -321);
-        Assert.assertEquals(reverse(1230), 321);
+        Assert.assertEquals(reverseNew(123), 321);
+        Assert.assertEquals(reverseNew(-123), -321);
+        Assert.assertEquals(reverseNew(1230), 321);
 
+    }
+
+    public int reverseNew(int x) {
+
+        if(x == Integer.MIN_VALUE) return 0;
+        boolean negative = x < 0;
+        if (negative){
+            x *= -1;
+        }
+
+        while ( x > 0 && x%10 == 0){
+            x /= 10;
+        }
+
+        long newNum = x%10;
+        x /=10;
+
+        while (x > 0){
+            newNum *= 10;
+            newNum += x%10;
+            x /= 10;
+        }
+
+        if (negative){
+            newNum *= -1;
+        }
+
+        if (newNum >= Integer.MIN_VALUE && newNum <= Integer.MAX_VALUE) return (int) newNum;
+        return 0;
     }
 }

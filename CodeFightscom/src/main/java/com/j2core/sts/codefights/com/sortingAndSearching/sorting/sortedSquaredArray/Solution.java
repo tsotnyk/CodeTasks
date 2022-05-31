@@ -1,4 +1,4 @@
-package com.j2core.sts.codefights.com.sortingAndSearching.sortedSquaredArray;
+package com.j2core.sts.codefights.com.sortingAndSearching.sorting.sortedSquaredArray;
 
 import java.util.LinkedList;
 import java.util.List;

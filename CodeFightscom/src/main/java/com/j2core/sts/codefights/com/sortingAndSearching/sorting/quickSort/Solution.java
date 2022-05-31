@@ -1,4 +1,4 @@
-package com.j2core.sts.codefights.com.sortingAndSearching.quickSort;
+package com.j2core.sts.codefights.com.sortingAndSearching.sorting.quickSort;
 
 public class Solution {
 

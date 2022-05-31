@@ -1,4 +1,4 @@
-package com.j2core.sts.codefights.com.sortingAndSearching.mergeKArrays;
+package com.j2core.sts.codefights.com.sortingAndSearching.sorting.mergeKArrays;
 
 import java.util.ArrayList;
 

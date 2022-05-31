@@ -38,9 +38,8 @@ public class Solution {
         }
     }
 
-    public List<Integer> topKFrequent(int[] nums, int k) {
+    public int[] topKFrequent(int[] nums, int k) {
 
-        List<Integer> result = new LinkedList<>();
         List<Number> numList = new LinkedList<>();
         for (int num : nums){
 
@@ -59,10 +58,9 @@ public class Solution {
         }
 
         Collections.sort(numList);
-
+        int[] result = new int[k];
         for (int i = 0; i < k; i++){
-
-            result.add(numList.get(i).num);
+            result[i] = numList.get(i).num;
         }
 
         return result;
@@ -71,9 +69,9 @@ public class Solution {
     @Test
     public void test(){
 
-                List<Integer> result = topKFrequent(new int[]{1,1,1,2,2,3}, 2);
+                int[] result = topKFrequent(new int[]{1,1,1,2,2,3}, 2);
 
-        Assert.assertEquals(result.size(), 2);
+        Assert.assertEquals(result.length, 2);
 
 //        List<Integer> result = topKFrequent(new int[]{3,2,3,1,2,4,5,5,6,7,7,8,2,3,1,1,1,10,11,5,6,2,4,7,8,5,6}, 10);
 //

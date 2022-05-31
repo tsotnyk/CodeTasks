@@ -1,4 +1,4 @@
-package com.j2core.sts.codefights.com.sortingAndSearching.mergeSort;
+package com.j2core.sts.codefights.com.sortingAndSearching.sorting.mergeSort;
 
 public class Solution {
 

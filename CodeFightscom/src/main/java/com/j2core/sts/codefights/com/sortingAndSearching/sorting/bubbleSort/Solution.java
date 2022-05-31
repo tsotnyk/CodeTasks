@@ -1,4 +1,4 @@
-package com.j2core.sts.codefights.com.sortingAndSearching.bubbleSort;
+package com.j2core.sts.codefights.com.sortingAndSearching.sorting.bubbleSort;
 
 public class Solution {
 

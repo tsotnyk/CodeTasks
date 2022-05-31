@@ -3,9 +3,25 @@ package com.j2core.sts.leetcode.com.squaresOfSortedArray;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.Arrays;
+
 public class Solution {
 
-    public int[] sortedSquares(int[] A) {
+    public int[] sortedSquares(int[] nums) {
+
+        int[] result = new int[nums.length];
+
+        for (int i = 0; i < nums.length; i++){
+
+            result[i] = nums[i]*nums[i];
+        }
+
+        Arrays.sort(result);
+
+        return result;
+    }
+
+    public int[] sortedSquaresOld(int[] A) {
 
         int length = A.length;
         int[] result = new int[length];

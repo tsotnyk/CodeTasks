@@ -15,7 +15,13 @@
         <module>Hackerrankcom</module>
         <module>Interviewbitcom</module>
         <module>Interview</module>
+        <module>educative_io</module>
     </modules>
-
-
+    <dependencies>
+    <dependency>
+        <groupId>org.json</groupId>
+        <artifactId>json</artifactId>
+        <version>20201115</version>
+    </dependency>
+    </dependencies>
 </project>

@@ -1,4 +1,4 @@
-package com.j2core.sts.codefights.com.sortingAndSearching.higherVersion2;
+package com.j2core.sts.codefights.com.sortingAndSearching.sorting.higherVersion2;
 
 import java.util.LinkedList;
 import java.util.List;

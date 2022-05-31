@@ -1,4 +1,4 @@
-package com.j2core.sts.codefights.com.sortingAndSearching.dfs_bfs.traverseTree;
+package com.j2core.sts.codefights.com.sortingAndSearching.dfs_bfs.largestValuesInTreeRows;
 
 public class Tree<T> {
 

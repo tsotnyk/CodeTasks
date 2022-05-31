@@ -70,7 +70,7 @@ public class Solution {
         return new LinkedList<>(result);
     }
 
-    public List<List<Integer>> threeSum(int[] nums) {
+    public List<List<Integer>> threeSum2(int[] nums) {
         Arrays.sort(nums);
         List<List<Integer>> res = new ArrayList<>();
         for (int i = 0; i < nums.length && nums[i] <= 0; ++i)
@@ -92,6 +92,59 @@ public class Solution {
         }
     }
 
+    public List<List<Integer>> threeSum(int[] nums) {
+        
+        Set<TreeSumArray> set = new HashSet<>();
+
+        for (int i = 0; i <= nums.length-3; i++){
+
+            int sum = nums[i]*-1;
+            for (int k = i+1; k <= nums.length-2; k++){
+                for (int l = k+1; l <= nums.length-1; l++){
+                    if (nums[k]+nums[l] == sum){
+                        List<Integer> list = new LinkedList<>(Arrays.asList(nums[i], nums[k], nums[l]));
+                        Collections.sort(list);
+                        set.add(new TreeSumArray(list));
+                    }
+                }
+            }
+        }
+
+        List<List<Integer>> result = new LinkedList<>();
+
+        for (TreeSumArray node : set){
+            result.add(node.list);
+        }
+
+        return  result;
+    }
+
+    class TreeSumArray{
+
+        List<Integer> list;
+
+        public TreeSumArray(List<Integer> list) {
+            this.list = list;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            TreeSumArray that = (TreeSumArray) o;
+
+            for (int i = 0; i < 3; i++){
+                if (!list.get(i).equals(this.list.get(i))) return false;
+            }
+
+            return true;
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(list);
+        }
+    }
 
     @Test
     public void test(){

@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Solution {
 
-    public String longestCommonPrefix(String[] strs) {
+    public String longestCommonPrefixOld(String[] strs) {
 
         if (strs.length < 1){
             return "";
@@ -89,5 +89,25 @@ public class Solution {
 
         Assert.assertEquals("", result);
 
+    }
+
+    public String longestCommonPrefix(String[] strs) {
+
+        String prefix = strs[0];
+        int index = 0;
+        boolean stop = false;
+        while (index < prefix.length()){
+            for (int i = 1; i < strs.length; i++){
+                String word = strs[i];
+                if (index == word.length() || (word.charAt(index) != prefix.charAt(index))){
+                    stop = true;
+                    break;
+                }
+            }
+            if (stop) break;
+            index++;
+        }
+
+        return strs[0].substring(0, index);
     }
 }

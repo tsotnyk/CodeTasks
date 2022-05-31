@@ -1,4 +1,4 @@
-package com.j2core.sts.codefights.com.sortingAndSearching.sortByString;
+package com.j2core.sts.codefights.com.sortingAndSearching.sorting.sortByString;
 
 public class Solution {
 
