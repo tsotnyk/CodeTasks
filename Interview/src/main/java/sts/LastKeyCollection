@@ -1,0 +1,104 @@
+package sts;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import java.util.HashMap;
+
+public class LastKeyCollection {
+    class Node {
+        int value;
+        String key;
+        Node next;
+        Node prev;
+    }
+    Node head = new Node();
+    Node tail = new Node();
+
+    {
+        head.next = tail;
+        tail.prev = head;
+    }
+
+    HashMap<String, Node> index = new HashMap<>();
+
+    public void put(String key, int value) {
+        // gimme key
+        var tmp = index.get(key);
+
+        if (tmp != null) {
+            delete(key);
+        } else {
+            tmp = new Node();
+            tmp.value = value;
+            tmp.key = key;
+        }
+
+        // insert to index
+        index.put(key, tmp);
+        // insert to list
+        tmp.prev = tail.prev;
+        tmp.prev.next = tmp;
+        tmp.next = tail;
+        tail.prev = tmp;
+    }
+
+     public void delete(String key) {
+        var tmp = index.get(key);
+        if (tmp == null) return;
+
+        // remove from index
+        index.remove(key);
+
+        // remove from list
+        tmp.prev.next = tmp.next;
+        tmp.next.prev = tmp.prev;
+    }
+
+    public Integer get(String key) {
+        var tmp = index.get(key);
+        if (tmp == null) return null;
+
+        // trigger rewrite
+        put(key, tmp.value);
+
+        return tmp.value;
+    }
+
+    public String getLast() {
+        return  (head == tail) ? null : tail.prev.key;
+    }
+
+    @Test
+    void testLastKeyCollectionSequence() {
+        // TODO: SPLIT ON CASES!!!!
+        var w = new LastKeyCollection();
+        // empty
+        Assert.assertNull(w.getLast());
+        Assert.assertNull(w.get("1"));
+        // simple add
+        w.put("1", 1);
+        Assert.assertEquals(w.getLast(), "1");
+        Assert.assertEquals(w.get("1"), 1);
+        // second element
+        w.put("2", 2);
+        Assert.assertEquals(w.getLast(), "2");
+
+        // get reorder
+        Assert.assertEquals(w.get("1"), 1);
+        Assert.assertEquals(w.getLast(), "1");
+
+        // put update reorder
+        w.put("2", 2);
+        Assert.assertEquals(w.getLast(), "2");
+
+        // delete reorder
+        w.put("3", 2);
+        Assert.assertEquals(w.getLast(), "3");
+        w.delete("3");
+        Assert.assertEquals(w.getLast(), "2");
+
+    }
+
+
+}
