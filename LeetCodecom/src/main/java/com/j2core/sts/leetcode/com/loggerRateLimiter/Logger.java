@@ -1,14 +1,17 @@
 package com.j2core.sts.leetcode.com.loggerRateLimiter;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 public class Logger {
 
     HashMap<String, Integer> logMap;
+    LinkedHashMap<String, Integer> map;
 
     /** Initialize your data structure here. */
     public Logger() {
-        this.logMap = new HashMap<>();
+//        this.logMap = new HashMap<>();
+        this.map = new LinkedHashMap<>(10);
     }
 
     /** Returns true if the message should be printed in the given timestamp, otherwise returns false.

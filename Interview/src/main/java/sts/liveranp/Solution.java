@@ -1,9 +1,9 @@
-//package sts.liveranp;
-//
-//import java.util.HashMap;
-//import java.util.LinkedList;
-//import java.util.List;
-//
+package sts.liveranp;
+
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+
 //public class Navigator {
 //    //todo: fill in as needed
 //
@@ -40,22 +40,22 @@
 //
 //
 //}
-//
-//class Point{
-//
-//    double x;
-//    double y;
-//}
-//
-//class Tower{
-//
-//    double x;
-//    double y;
-//    double r;
-//
-//    public Tower(double x, double y, double r) {
-//        this.x = x;
-//        this.y = y;
-//        this.r = r;
-//    }
-//}
+
+class Point{
+
+    double x;
+    double y;
+}
+
+class Tower{
+
+    double x;
+    double y;
+    double r;
+
+    public Tower(double x, double y, double r) {
+        this.x = x;
+        this.y = y;
+        this.r = r;
+    }
+}

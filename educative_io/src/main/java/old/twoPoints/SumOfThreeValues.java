@@ -1,4 +1,4 @@
-package twoPoints;
+package old.twoPoints;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;

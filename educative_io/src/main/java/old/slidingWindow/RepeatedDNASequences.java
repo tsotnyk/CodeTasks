@@ -1,4 +1,4 @@
-package slidingWindow;
+package old.slidingWindow;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;

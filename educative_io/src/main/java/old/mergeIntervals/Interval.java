@@ -1,4 +1,4 @@
-package mergeIntervals;
+package old.mergeIntervals;
 
 public class Interval {
 

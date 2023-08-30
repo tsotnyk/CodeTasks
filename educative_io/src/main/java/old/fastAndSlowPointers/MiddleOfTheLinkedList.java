@@ -1,4 +1,4 @@
-package fastAndSlowPointers;
+package old.fastAndSlowPointers;
 
 public class MiddleOfTheLinkedList {
 

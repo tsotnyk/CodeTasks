@@ -1,4 +1,4 @@
-package slidingWindow;
+package old.slidingWindow;
 
 import java.util.EnumMap;
 import java.util.HashMap;
