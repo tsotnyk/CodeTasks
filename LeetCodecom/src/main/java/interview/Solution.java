@@ -1,156 +1,124 @@
 package interview;
-import java.text.DecimalFormat;
-import java.util.*;
 
-class Point {
-    private double x;
-    private double y;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
-    Point(double x, double y) {
-        this.x = x;
-        this.y = y;
-    }
-
-    public double getX() { return x; }
-
-    public double getY() { return y; }
-
-    public void setX(double x) { this.x = x; }
-
-    public void setY(double y) { this.y = y; }
-
-    public static double distance(Point p1, Point p2) {
-        double distance = Math.sqrt(
-                Math.pow(p2.getY() - p1.getY(), 2) +
-                        Math.pow(p2.getX() - p1.getX(), 2)
-        );
-
-        return distance;
-    }
-
-    public String toString() {
-        return "(" + this.x + ", " + this.y + ")";
-    }
-}
-
-class Line {
-    private Point start = new Point(0, 0);
-    private Point end = new Point(0, 0);
-
-    Line(Point start, Point end) {
-        this.start = start;
-        this.end = end;
-    }
-
-    public Point getStart() { return start; }
-
-    public Point getEnd() { return end; }
-
-    public void setStart(Point start) { this.start = start; }
-
-    public void setEnd(Point end) { this.end = end; }
-
-    public double getLineLength() {
-        return Point.distance(start, end);
-    }
-
-    public String toString() {
-        return "Start: " + this.start + " End: " + this.end;
-    }
-}
-
-interface ListOfLines {
-    public Vector<Line> getLinesFromStartingPoint(Point p);
-    public Line getLineWithMaxLength();
-    public Vector<Line> list_of_lines = null;
-}
-
-class LineList implements ListOfLines {
-
-    TreeMap<Double, List<Line>> sorMap;
-    HashMap<Point, Vector<Line>> pointMap;
-
-    public LineList(Vector<Line> lines){
-
-        this.sorMap = new TreeMap<>();
-        this.pointMap = new HashMap<>();
-        Iterator<Line> value = lines.iterator();
-
-        while(value.hasNext()){
-            Line tmp = (Line) value.next();
-            Point start = tmp.getStart();
-            if(pointMap.containsKey(start)){
-                pointMap.get(start).add(tmp);
-            }else{
-                pointMap.put(start, new Vector<>(Collections.singleton(tmp)));
-            }
-            //
-            double lingth = tmp.getLineLength();
-            if(sorMap.containsKey(lingth)){
-                sorMap.get(lingth).add(tmp);
-            }else{
-                sorMap.put(lingth, new LinkedList<>(Collections.singleton(tmp)));
-            }
-        }
-
-    }
-
-    public Line getLineWithMaxLength(){
-
-        return this.sorMap.get(sorMap.lastKey()).get(0);
-    }
-
-    public Vector<Line> getLinesFromStartingPoint(Point p){
-
-        return this.pointMap.get(p);
-    }
-
-}
+import java.util.Stack;
 
 public class Solution {
 
-    public static void main(String[] args) {
-        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+    // Time comp - O(n)
+    public double[] findMedianOfSubarray(int[] input, int windowSize){
 
-        String[] input;
-        Scanner sc = new Scanner(System.in);
-        String sub = sc.nextLine();
-        int nLines = Integer.parseInt(sub);
-        Vector<Line> lines = new Vector<Line>();
-        for(int i=0; i<nLines; i++) {
-            input = sc.nextLine().split(" ");
-            /* x1 y1 x2 y2 */
-            double x1 = Double.parseDouble(input[0]);
-            double y1 = Double.parseDouble(input[1]);
-            double x2 = Double.parseDouble(input[2]);
-            double y2 = Double.parseDouble(input[3]);
+        if (input == null || input.length < windowSize) throw new IllegalArgumentException();
 
-            Point p1 = new Point(x1, y1);
-            Point p2 = new Point(x2, y2);
-            Line line = new Line(p1, p2);
-            lines.add(line);
+        boolean even = windowSize%2 == 0;
+        int iR = windowSize/2;
+        int iL = even ? iR-1 : iR;
+
+        double[] result = new double[input.length-windowSize+1];
+        int index = 0;
+
+        while(index < result.length){
+
+            result[index++] = ((double) input[iL] + (double) input[iR])/2.0;
+            iL += windowSize/2;
+            iR += windowSize/2;
         }
 
-        /* Input to find all the line starting from point p1 */
-        input = sc.nextLine().split(" ");
-        double point_x1 = Double.parseDouble(input[0]);
-        double point_y1 = Double.parseDouble(input[1]);
-        Point startingPoint = new Point(point_x1, point_y1);
+        return result;
+    }
 
-        /* Finding Longest Line*/
-        LineList myList = new LineList(lines);
-        Line maxLine = myList.getLineWithMaxLength();
-        System.out.println("Longest Line --> " + maxLine);
-        double length = maxLine.getLineLength();
-        DecimalFormat df = new DecimalFormat("#.00");
-        System.out.println("Length: " + (String)df.format(length));
+    // Time comp - O(n)
+    public double[] findAverage(int[] input, int windowSize){
 
-        /* Finding all the lines starting from point startingPoint */
-        Vector<Line> starting_lines = myList.getLinesFromStartingPoint(startingPoint);
-        System.out.println("All the Lines starting from point: " + startingPoint);
-        Iterator value = starting_lines.iterator();
-        while(value.hasNext()) {
-            System.out.println(value.next());
+        double sum = 0;
+
+        for (int i = 0; i < windowSize; i++){
+            sum += input[i];
         }
+
+        double[] result = new double[input.length-windowSize+1];
+        int index = 0;
+
+        while (index+windowSize < input.length){
+            result[index] = sum/windowSize;
+            sum = sum - input[index] + input[index+windowSize];
+            index++;
+        }
+
+        result[index] = sum/windowSize;
+
+        return result;
+    }
+
+    // Time comp - O(1)
+    // Space comp - O(1)
+    public String createNewLocation(String cwd, String cd){
+
+
+        return cd.startsWith("/") ? cd : cwd.charAt(cwd.length()-1) == '/' ? cwd+cd : cwd+'/'+cd;
+    }
+
+
+    // Time comp - O(n+m), where n - cwd.length, m - cd.length
+    // Space comp - O(n+m)
+    public String createNewPath(String cwd, String cd) {
+        if (cd.indexOf('.') == -1){
+            return cd.charAt(0) == '/'? cd : cwd.length() == 1 && cwd.charAt(0) == '/' ? cwd+cd : cwd+"/"+cd;
+        }
+        Stack<String> stack = new Stack<>();
+        if (cd.charAt(0) != '/') {
+            String[] currentPath = cwd.split("/");
+            for (String partPath : currentPath) {
+                if (!partPath.isEmpty()) {
+                    stack.push(partPath);
+                }
+            }
+        }
+        String[] newPath = cd.split("/");
+        for (String partPath : newPath){
+            switch (partPath){
+                case "":
+                case ".":
+                    continue;
+                case "..":
+                    if (!stack.empty()) stack.pop();
+                    break;
+                default: stack.push(partPath);
+            }
+        }
+        StringBuilder builder = new StringBuilder();
+        while (!stack.empty()){
+            builder.insert(0, stack.pop());
+            builder.insert(0, "/");
+        }
+        return builder.length() > 0 ? builder.toString() : "/";
+    }
+
+
+
+    @Test
+    public void test(){
+
+        Assert.assertEquals( findMedianOfSubarray(new int[]{1,2,3,4,5}, 3), new double[]{2.0, 3.0, 4.0});
+        Assert.assertEquals( findMedianOfSubarray(new int[]{1,2,3,4,5}, 2), new double[]{1.5, 2.5, 3.5, 4.5});
+
+        Assert.assertEquals( findAverage(new int[]{1,2,3,4,5}, 3), new double[]{2.0, 3.0, 4.0});
+        Assert.assertEquals( findAverage(new int[]{1,2,3,4,5}, 2), new double[]{1.5, 2.5, 3.5, 4.5});
+
+        Assert.assertEquals(createNewLocation("/", "foo"), "/foo");
+        Assert.assertEquals(createNewLocation("/foo", "/bar"), "/bar");
+        Assert.assertEquals(createNewLocation("/foo/bar", "/bar"), "/bar");
+        Assert.assertEquals(createNewLocation("/foo/bar", "bart"), "/foo/bar/bart");
+
+        Assert.assertEquals(createNewPath("/", "foo"), "/foo");
+        Assert.assertEquals(createNewPath("/foo", "/bar"), "/bar");
+        Assert.assertEquals(createNewPath("/foo/bar", "/bar"), "/bar");
+        Assert.assertEquals(createNewPath("/foo/bar", "bart"), "/foo/bar/bart");
+        Assert.assertEquals(createNewPath("/foo/bar", "../../.././.."), "/");
+        Assert.assertEquals(createNewPath("/foo/bar", "../bart/../bak"), "/foo/bak");
+        Assert.assertEquals(createNewPath("/foo/bar", "/bart/./bak"), "/bart/bak");
+        Assert.assertEquals(createNewPath("/foo/bar", "bart/bak"), "/foo/bar/bart/bak");
     }
 }
