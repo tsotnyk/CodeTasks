@@ -1,0 +1,122 @@
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import java.util.Stack;
+
+public class Solution {
+
+    // Time comp - O(n)
+    public double[] findMedianOfSubarray(int[] input, int windowSize){
+
+        if (input == null || input.length < windowSize) throw new IllegalArgumentException();
+
+        boolean even = windowSize%2 == 0;
+        int iR = windowSize/2;
+        int iL = even ? iR-1 : iR;
+
+        double[] result = new double[input.length-windowSize+1];
+        int index = 0;
+
+        while(index < result.length){
+
+            result[index++] = ((double) input[iL] + (double) input[iR])/2.0;
+            iL += windowSize/2;
+            iR += windowSize/2;
+        }
+
+        return result;
+    }
+
+    // Time comp - O(n)
+    public double[] findAverage(int[] input, int windowSize){
+
+        double sum = 0;
+
+        for (int i = 0; i < windowSize; i++){
+            sum += input[i];
+        }
+
+        double[] result = new double[input.length-windowSize+1];
+        int index = 0;
+
+        while (index+windowSize < input.length){
+            result[index] = sum/windowSize;
+            sum = sum - input[index] + input[index+windowSize];
+            index++;
+        }
+
+        result[index] = sum/windowSize;
+
+        return result;
+    }
+
+    // Time comp - O(1)
+    // Space comp - O(1)
+    public String createNewLocation(String cwd, String cd){
+
+
+        return cd.startsWith("/") ? cd : cwd.charAt(cwd.length()-1) == '/' ? cwd+cd : cwd+'/'+cd;
+    }
+
+
+    // Time comp - O(n+m), where n - cwd.length, m - cd.length
+    // Space comp - O(n+m)
+    public String createNewPath(String cwd, String cd) {
+        if (cd.indexOf('.') == -1){
+            return cd.charAt(0) == '/'? cd : cwd.length() == 1 && cwd.charAt(0) == '/' ? cwd+cd : cwd+"/"+cd;
+        }
+        Stack<String> stack = new Stack<>();
+        if (cd.charAt(0) != '/') {
+            String[] currentPath = cwd.split("/");
+            for (String partPath : currentPath) {
+                if (!partPath.isEmpty()) {
+                    stack.push(partPath);
+                }
+            }
+        }
+        String[] newPath = cd.split("/");
+        for (String partPath : newPath){
+            switch (partPath){
+                case "":
+                case ".":
+                    continue;
+                case "..":
+                    if (!stack.empty()) stack.pop();
+                    break;
+                default: stack.push(partPath);
+            }
+        }
+        StringBuilder builder = new StringBuilder();
+        while (!stack.empty()){
+            builder.insert(0, stack.pop());
+            builder.insert(0, "/");
+        }
+        return builder.length() > 0 ? builder.toString() : "/";
+    }
+
+
+
+    @Test
+    public void test(){
+
+        Assert.assertEquals( findMedianOfSubarray(new int[]{1,2,3,4,5}, 3), new double[]{2.0, 3.0, 4.0});
+        Assert.assertEquals( findMedianOfSubarray(new int[]{1,2,3,4,5}, 2), new double[]{1.5, 2.5, 3.5, 4.5});
+
+        Assert.assertEquals( findAverage(new int[]{1,2,3,4,5}, 3), new double[]{2.0, 3.0, 4.0});
+        Assert.assertEquals( findAverage(new int[]{1,2,3,4,5}, 2), new double[]{1.5, 2.5, 3.5, 4.5});
+
+        Assert.assertEquals(createNewLocation("/", "foo"), "/foo");
+        Assert.assertEquals(createNewLocation("/foo", "/bar"), "/bar");
+        Assert.assertEquals(createNewLocation("/foo/bar", "/bar"), "/bar");
+        Assert.assertEquals(createNewLocation("/foo/bar", "bart"), "/foo/bar/bart");
+
+        Assert.assertEquals(createNewPath("/", "foo"), "/foo");
+        Assert.assertEquals(createNewPath("/foo", "/bar"), "/bar");
+        Assert.assertEquals(createNewPath("/foo/bar", "/bar"), "/bar");
+        Assert.assertEquals(createNewPath("/foo/bar", "bart"), "/foo/bar/bart");
+        Assert.assertEquals(createNewPath("/foo/bar", "../../.././.."), "/");
+        Assert.assertEquals(createNewPath("/foo/bar", "../bart/../bak"), "/foo/bak");
+        Assert.assertEquals(createNewPath("/foo/bar", "/bart/./bak"), "/bart/bak");
+        Assert.assertEquals(createNewPath("/foo/bar", "bart/bak"), "/foo/bar/bart/bak");
+    }
+}
