@@ -28,7 +28,7 @@ public class RotateString {
     }
 
     @Test
-    public void test(){
+    public void rotateString(){
 
         Assert.assertTrue(rotateString("abcde", "cdeab"));
         Assert.assertFalse(rotateString("abcde", "abced"));

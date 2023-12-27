@@ -1,6 +1,5 @@
 package faang.apple;
 
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.HashMap;
