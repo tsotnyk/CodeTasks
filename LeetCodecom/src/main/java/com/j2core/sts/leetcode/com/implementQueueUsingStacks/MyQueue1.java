@@ -2,13 +2,13 @@ package com.j2core.sts.leetcode.com.implementQueueUsingStacks;
 
 import java.util.Stack;
 
-public class MyQueue {
+public class MyQueue1 {
 
     private Stack<Integer> stackRevers;
     private Stack<Integer> stackQueue;
 
     /** Initialize your data structure here. */
-    public MyQueue() {
+    public MyQueue1() {
         this.stackRevers = new Stack<>();
         this.stackQueue = new Stack<>();
     }

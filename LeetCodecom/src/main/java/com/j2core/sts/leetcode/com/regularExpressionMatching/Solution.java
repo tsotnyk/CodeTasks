@@ -80,7 +80,7 @@ public class Solution {
     @Test
     public void test(){
 
-        Assert.assertTrue(isMatch("aa", "a*"));
+        Assert.assertTrue(isMatch("aab", "c*a*b"));
 
     }
 }

@@ -1,43 +1,51 @@
 package com.j2core.sts.leetcode.com.lRUCache;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.LinkedList;
 
-class LRUCache {
+public class LRUCache {
 
-    private int capacity    =   0;
-    private int currCap     =   0;
-    private Stack<Integer> stack = null;
-    private Map<Integer,Integer> map = null;
+    HashMap<Integer, CacheNode> map;
+    CacheNode head;
+    int capacity;
+    int size;
 
     public LRUCache(int capacity) {
-        this.capacity   =   capacity;
-        this.stack      =   new Stack<>();
-        this.map        =   new HashMap<>();
+
+        this.map = new HashMap<>();
+        this.head = null;
+        this.capacity = capacity;
+        this.size = 0;
     }
 
     public int get(int key) {
 
-        if(this.map.containsKey(key)){
-            stack.remove(Integer.valueOf(key));
-            stack.push(key);
-        }
-        return this.map.getOrDefault(key,-1);
+        CacheNode node = this.map.get(key);
+
+        if (node == null) return -1;
+
+        node.prev.next = node.next;
+
+
+        return node.value;
     }
 
     public void put(int key, int value) {
-        if(map.containsKey(key)){
-            stack.remove(Integer.valueOf(key));
-            stack.push(key);
-        }else {
-            if(currCap == capacity){
-                int lastVal =   stack.firstElement();
-                map.remove(lastVal);
-                stack.remove(Integer.valueOf(lastVal));
-            }else{
-                currCap++;
-            }
-            stack.add(key);
-        }
-        map.put(key,value);
+
+    }
+}
+
+class CacheNode{
+
+    int key;
+    int value;
+    CacheNode prev;
+    CacheNode next;
+
+    public CacheNode(int key, int value) {
+        this.value = value;
+        this.next = null;
+        this.prev = null;
+        this.key = key;
     }
 }

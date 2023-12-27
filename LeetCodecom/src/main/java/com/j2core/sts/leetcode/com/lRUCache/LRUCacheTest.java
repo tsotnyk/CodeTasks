@@ -7,7 +7,7 @@ public class LRUCacheTest {
     @Test
     public void test() {
 
-        LRUCache cache = new LRUCache(2);
+        LRUCacheOld cache = new LRUCacheOld(2);
 
         cache.put(1, 1);
         cache.put(2, 2);
@@ -20,7 +20,7 @@ public class LRUCacheTest {
         System.out.println(cache.get(3));
         System.out.println(cache.get(4));
 
-        LRUCache cache1 = new LRUCache(2);
+        LRUCacheOld cache1 = new LRUCacheOld(2);
 
         System.out.println(cache1.get(2));
         cache1.put(2, 6);
