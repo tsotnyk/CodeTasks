@@ -5,11 +5,19 @@ import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 
 public class TestTmp {
 
     @Test
     public void tmp(){
+
+
+        List<Integer> list = new LinkedList<>();
+        list.add(null);
+
+        int size = list.size();
 
         ArrayList<Character> word = new ArrayList<>(Arrays.asList('a','b','a','b','c','a','c'));
 

@@ -17,7 +17,8 @@
         <module>Interview</module>
         <module>educative_io</module>
         <module>CCI</module>
-        <module>LeetCodeMockAssessments</module>
+        <module>geeksforgeeks</module>
+        <module>geeksforgeeks</module>
     </modules>
     <dependencies>
     <dependency>

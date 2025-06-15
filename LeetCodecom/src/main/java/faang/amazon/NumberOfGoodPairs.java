@@ -4,7 +4,8 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.HashMap;
-import java.util.Map;
+import java.util.LinkedList;
+import java.util.List;
 
 public class NumberOfGoodPairs {
 
@@ -25,6 +26,7 @@ public class NumberOfGoodPairs {
 
     @Test
     public void test(){
+
 
         Assert.assertEquals(4, numIdenticalPairs(new int[]{1,2,3,1,1,3}));
         Assert.assertEquals(6, numIdenticalPairs(new int[]{1,1,1,1}));
